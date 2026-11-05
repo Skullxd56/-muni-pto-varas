@@ -1,0 +1,1035 @@
+/* ==========================================================
+   Municipalidad de Puerto Varas - Estilos Modo Oscuro
+   Corrección integral de contraste para modo oscuro (.dark-mode)
+   ========================================================== */
+
+/* Variables para modo oscuro */
+[data-theme="oscuro"],
+body.dark-mode,
+.dark-mode {
+  --color-primario: #8b5fc6;
+  --color-primario-oscuro: #2f1a4a;
+  --color-acento: #a078d6;
+  --color-texto: #ffffff;
+  --color-texto-suave: #e6edf3;
+  --color-fondo: #10181d;
+  --color-blanco: #1a2227;
+  --color-borde: #2d3a42;
+  --sombra: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Fondo general de la página y texto base */
+body.dark-mode,
+.dark-mode,
+[data-theme="oscuro"] body {
+  background-color: #10181d !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .encabezado,
+.dark-mode .encabezado {
+  background-color: #10181d !important;
+  border-bottom-color: #2d3a42 !important;
+}
+
+/* ==========================================================
+   Logo en modo oscuro (filtro blanco para destacar sobre fondo oscuro)
+   ========================================================== */
+body.dark-mode header .marca img,
+body.dark-mode header .marca__logo,
+body.dark-mode header img[src*="logo"],
+body.dark-mode .encabezado .marca__logo,
+body.dark-mode .encabezado .marca img,
+body.dark-mode .encabezado img[src*="logo"],
+body.dark-mode .marca__logo,
+body.dark-mode .marca img,
+.dark-mode header .marca img,
+.dark-mode header .marca__logo,
+.dark-mode header img[src*="logo"],
+.dark-mode .encabezado .marca__logo,
+.dark-mode .encabezado .marca img,
+.dark-mode .encabezado img[src*="logo"],
+.dark-mode .marca__logo,
+.dark-mode .marca img,
+[data-theme="oscuro"] header .marca img,
+[data-theme="oscuro"] header .marca__logo,
+[data-theme="oscuro"] .encabezado .marca__logo,
+[data-theme="oscuro"] .marca__logo {
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+  opacity: 1 !important;
+  transition: filter 0.25s ease;
+}
+
+body.dark-mode .navegacion a,
+.dark-mode .navegacion a {
+  color: #ffffff !important;
+}
+
+body.dark-mode .seccion h1,
+body.dark-mode .seccion h2,
+body.dark-mode .seccion h3,
+body.dark-mode .seccion p,
+body.dark-mode .seccion__titulo,
+body.dark-mode .seccion__subtitulo,
+body.dark-mode .noticias__titulo,
+body.dark-mode .marca,
+.dark-mode .seccion h1,
+.dark-mode .seccion h2,
+.dark-mode .seccion h3,
+.dark-mode .seccion p,
+.dark-mode .seccion__titulo,
+.dark-mode .seccion__subtitulo,
+.dark-mode .noticias__titulo,
+.dark-mode .marca {
+  color: #ffffff !important;
+}
+
+/* ==========================================================
+   FONDOS OSCUROS PARA CUALQUIER TIPO DE TARJETA, RECUADRO O CONTENEDOR
+   ========================================================== */
+body.dark-mode .card,
+body.dark-mode .tarjeta,
+body.dark-mode .servicio,
+body.dark-mode .tarjeta-contenido,
+body.dark-mode .tarjeta__contenido,
+body.dark-mode .banner-tramite,
+body.dark-mode .lista-departamentos li,
+body.dark-mode .noticia__contenido-blanco,
+body.dark-mode .seccion--alterna,
+body.dark-mode #servicios .servicio,
+body.dark-mode .servicios .servicio,
+body.dark-mode #servicios .card,
+body.dark-mode .servicios .card,
+body.dark-mode #servicios .tarjeta,
+body.dark-mode .servicios .tarjeta,
+body.dark-mode #turismo .tarjeta,
+body.dark-mode .turismo .tarjeta,
+body.dark-mode #turismo .card,
+body.dark-mode .turismo .card,
+body.dark-mode .rejilla .tarjeta,
+body.dark-mode .rejilla .card,
+.dark-mode .card,
+.dark-mode .tarjeta,
+.dark-mode .servicio,
+.dark-mode .tarjeta-contenido,
+.dark-mode .tarjeta__contenido,
+.dark-mode .banner-tramite,
+.dark-mode .lista-departamentos li,
+.dark-mode .noticia__contenido-blanco,
+.dark-mode .seccion--alterna,
+.dark-mode #servicios .servicio,
+.dark-mode .servicios .servicio,
+.dark-mode #servicios .card,
+.dark-mode .servicios .card,
+.dark-mode #servicios .tarjeta,
+.dark-mode .servicios .tarjeta,
+.dark-mode #turismo .tarjeta,
+.dark-mode .turismo .tarjeta,
+.dark-mode #turismo .card,
+.dark-mode .turismo .card,
+.dark-mode .rejilla .tarjeta,
+.dark-mode .rejilla .card,
+[data-theme="oscuro"] .card,
+[data-theme="oscuro"] .tarjeta,
+[data-theme="oscuro"] .servicio,
+[data-theme="oscuro"] .tarjeta-contenido,
+[data-theme="oscuro"] .tarjeta__contenido,
+[data-theme="oscuro"] .banner-tramite,
+[data-theme="oscuro"] .lista-departamentos li,
+[data-theme="oscuro"] .noticia__contenido-blanco {
+  background-color: #1a2227 !important;
+  background-image: none !important;
+  border-color: #2d3a42 !important;
+}
+
+body.dark-mode .lista-departamentos li,
+.dark-mode .lista-departamentos li,
+[data-theme="oscuro"] .lista-departamentos li {
+  border-left-color: #8b5fc6 !important;
+}
+
+body.dark-mode .lista-departamentos li:hover,
+.dark-mode .lista-departamentos li:hover {
+  background-color: #232d34 !important;
+  border-left-color: #a078d6 !important;
+}
+
+/* ==========================================================
+   TEXTO EN BLANCO (#ffffff !important) DENTRO DE CUALQUIER TARJETA,
+   RECUADRO O CONTENEDOR (h1, h2, h3, p, li, a, span)
+   ========================================================== */
+
+/* 1. Títulos (h1, h2, h3, h4) */
+body.dark-mode .card h1, body.dark-mode .card h2, body.dark-mode .card h3, body.dark-mode .card h4,
+body.dark-mode .tarjeta h1, body.dark-mode .tarjeta h2, body.dark-mode .tarjeta h3, body.dark-mode .tarjeta h4,
+body.dark-mode .servicio h1, body.dark-mode .servicio h2, body.dark-mode .servicio h3, body.dark-mode .servicio h4,
+body.dark-mode .tarjeta-contenido h1, body.dark-mode .tarjeta-contenido h2, body.dark-mode .tarjeta-contenido h3, body.dark-mode .tarjeta-contenido h4,
+body.dark-mode .banner-tramite h1, body.dark-mode .banner-tramite h2, body.dark-mode .banner-tramite h3, body.dark-mode .banner-tramite h4,
+body.dark-mode .noticia__contenido-blanco h1, body.dark-mode .noticia__contenido-blanco h2, body.dark-mode .noticia__contenido-blanco h3, body.dark-mode .noticia__contenido-blanco h4,
+body.dark-mode .noticia__titulo,
+body.dark-mode .lista-departamentos h1, body.dark-mode .lista-departamentos h2, body.dark-mode .lista-departamentos h3,
+body.dark-mode #servicios h1, body.dark-mode #servicios h2, body.dark-mode #servicios h3,
+body.dark-mode .servicios h1, body.dark-mode .servicios h2, body.dark-mode .servicios h3,
+body.dark-mode #turismo h1, body.dark-mode #turismo h2, body.dark-mode #turismo h3,
+body.dark-mode .turismo h1, body.dark-mode .turismo h2, body.dark-mode .turismo h3,
+body.dark-mode #departamentos h1, body.dark-mode #departamentos h2, body.dark-mode #departamentos h3,
+.dark-mode .card h1, .dark-mode .card h2, .dark-mode .card h3, .dark-mode .card h4,
+.dark-mode .tarjeta h1, .dark-mode .tarjeta h2, .dark-mode .tarjeta h3, .dark-mode .tarjeta h4,
+.dark-mode .servicio h1, .dark-mode .servicio h2, .dark-mode .servicio h3, .dark-mode .servicio h4,
+.dark-mode .tarjeta-contenido h1, .dark-mode .tarjeta-contenido h2, .dark-mode .tarjeta-contenido h3, .dark-mode .tarjeta-contenido h4,
+.dark-mode .banner-tramite h1, .dark-mode .banner-tramite h2, .dark-mode .banner-tramite h3, .dark-mode .banner-tramite h4,
+.dark-mode .noticia__contenido-blanco h1, .dark-mode .noticia__contenido-blanco h2, .dark-mode .noticia__contenido-blanco h3, .dark-mode .noticia__contenido-blanco h4,
+.dark-mode .noticia__titulo,
+.dark-mode .lista-departamentos h1, .dark-mode .lista-departamentos h2, .dark-mode .lista-departamentos h3,
+.dark-mode #servicios h1, .dark-mode #servicios h2, .dark-mode #servicios h3,
+.dark-mode .servicios h1, .dark-mode .servicios h2, .dark-mode .servicios h3,
+.dark-mode #turismo h1, .dark-mode #turismo h2, .dark-mode #turismo h3,
+.dark-mode .turismo h1, .dark-mode .turismo h2, .dark-mode .turismo h3,
+.dark-mode #departamentos h1, .dark-mode #departamentos h2, .dark-mode #departamentos h3,
+[data-theme="oscuro"] .card h1, [data-theme="oscuro"] .card h2, [data-theme="oscuro"] .card h3,
+[data-theme="oscuro"] .tarjeta h1, [data-theme="oscuro"] .tarjeta h2, [data-theme="oscuro"] .tarjeta h3,
+[data-theme="oscuro"] .servicio h1, [data-theme="oscuro"] .servicio h2, [data-theme="oscuro"] .servicio h3,
+[data-theme="oscuro"] .tarjeta-contenido h1, [data-theme="oscuro"] .tarjeta-contenido h2, [data-theme="oscuro"] .tarjeta-contenido h3,
+[data-theme="oscuro"] .banner-tramite h1, [data-theme="oscuro"] .banner-tramite h2, [data-theme="oscuro"] .banner-tramite h3,
+[data-theme="oscuro"] .noticia__contenido-blanco h1, [data-theme="oscuro"] .noticia__contenido-blanco h2, [data-theme="oscuro"] .noticia__contenido-blanco h3,
+[data-theme="oscuro"] .noticia__titulo {
+  color: #ffffff !important;
+}
+
+/* 2. Párrafos (p) */
+body.dark-mode .card p,
+body.dark-mode .tarjeta p,
+body.dark-mode .servicio p,
+body.dark-mode .tarjeta-contenido p,
+body.dark-mode .banner-tramite p,
+body.dark-mode .noticia__contenido-blanco p,
+body.dark-mode .lista-departamentos p,
+body.dark-mode #servicios p,
+body.dark-mode .servicios p,
+body.dark-mode #turismo p,
+body.dark-mode .turismo p,
+.dark-mode .card p,
+.dark-mode .tarjeta p,
+.dark-mode .servicio p,
+.dark-mode .tarjeta-contenido p,
+.dark-mode .banner-tramite p,
+.dark-mode .noticia__contenido-blanco p,
+.dark-mode .lista-departamentos p,
+.dark-mode #servicios p,
+.dark-mode .servicios p,
+.dark-mode #turismo p,
+.dark-mode .turismo p,
+[data-theme="oscuro"] .card p,
+[data-theme="oscuro"] .tarjeta p,
+[data-theme="oscuro"] .servicio p,
+[data-theme="oscuro"] .tarjeta-contenido p,
+[data-theme="oscuro"] .banner-tramite p,
+[data-theme="oscuro"] .noticia__contenido-blanco p {
+  color: #ffffff !important;
+}
+
+/* 3. Listas y listas de requisitos (li, ul) */
+body.dark-mode .card li,
+body.dark-mode .tarjeta li,
+body.dark-mode .servicio li,
+body.dark-mode .tarjeta-contenido li,
+body.dark-mode .banner-tramite li,
+body.dark-mode .requisitos li,
+body.dark-mode .requisitos li::before,
+body.dark-mode .requisitos,
+body.dark-mode .lista-departamentos li,
+.dark-mode .card li,
+.dark-mode .tarjeta li,
+.dark-mode .servicio li,
+.dark-mode .tarjeta-contenido li,
+.dark-mode .banner-tramite li,
+.dark-mode .requisitos li,
+.dark-mode .requisitos li::before,
+.dark-mode .requisitos,
+.dark-mode .lista-departamentos li,
+[data-theme="oscuro"] .card li,
+[data-theme="oscuro"] .tarjeta li,
+[data-theme="oscuro"] .servicio li,
+[data-theme="oscuro"] .tarjeta-contenido li,
+[data-theme="oscuro"] .banner-tramite li,
+[data-theme="oscuro"] .requisitos li,
+[data-theme="oscuro"] .requisitos li::before,
+[data-theme="oscuro"] .lista-departamentos li {
+  color: #ffffff !important;
+}
+
+/* 4. Enlaces (a), enlaces 'Ingresar' y nombres de direcciones municipales */
+body.dark-mode .card a,
+body.dark-mode .tarjeta a,
+body.dark-mode .servicio a,
+body.dark-mode .tarjeta-contenido a,
+body.dark-mode .banner-tramite a,
+body.dark-mode .tarjeta__enlace,
+body.dark-mode .servicio__enlace,
+body.dark-mode .lista-departamentos a,
+body.dark-mode .lista-departamentos a:hover,
+body.dark-mode .lista-departamentos li a,
+.dark-mode .card a,
+.dark-mode .tarjeta a,
+.dark-mode .servicio a,
+.dark-mode .tarjeta-contenido a,
+.dark-mode .banner-tramite a,
+.dark-mode .tarjeta__enlace,
+.dark-mode .servicio__enlace,
+.dark-mode .lista-departamentos a,
+.dark-mode .lista-departamentos a:hover,
+.dark-mode .lista-departamentos li a,
+[data-theme="oscuro"] .card a,
+[data-theme="oscuro"] .tarjeta a,
+[data-theme="oscuro"] .servicio a,
+[data-theme="oscuro"] .tarjeta-contenido a,
+[data-theme="oscuro"] .banner-tramite a,
+[data-theme="oscuro"] .tarjeta__enlace,
+[data-theme="oscuro"] .servicio__enlace,
+[data-theme="oscuro"] .lista-departamentos a,
+[data-theme="oscuro"] .lista-departamentos a:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .tarjeta__enlace:hover,
+body.dark-mode .servicio__enlace:hover,
+.dark-mode .tarjeta__enlace:hover,
+.dark-mode .servicio__enlace:hover {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+}
+
+/* 5. Spans y etiquetas dentro de tarjetas o contenedores */
+body.dark-mode .card span,
+body.dark-mode .tarjeta span,
+body.dark-mode .servicio span,
+body.dark-mode .tarjeta-contenido span,
+body.dark-mode .banner-tramite span,
+body.dark-mode .noticia__contenido-blanco span,
+body.dark-mode .lista-departamentos span,
+.dark-mode .card span,
+.dark-mode .tarjeta span,
+.dark-mode .servicio span,
+.dark-mode .tarjeta-contenido span,
+.dark-mode .banner-tramite span,
+.dark-mode .noticia__contenido-blanco span,
+.dark-mode .lista-departamentos span,
+[data-theme="oscuro"] .card span,
+[data-theme="oscuro"] .tarjeta span,
+[data-theme="oscuro"] .servicio span,
+[data-theme="oscuro"] .tarjeta-contenido span,
+[data-theme="oscuro"] .banner-tramite span,
+[data-theme="oscuro"] .noticia__contenido-blanco span {
+  color: #ffffff !important;
+}
+
+/* 6. Íconos dentro de tarjetas */
+body.dark-mode .tarjeta__icono,
+body.dark-mode .servicio__icono,
+.dark-mode .tarjeta__icono,
+.dark-mode .servicio__icono,
+[data-theme="oscuro"] .tarjeta__icono,
+[data-theme="oscuro"] .servicio__icono {
+  color: #ffffff !important;
+  background-color: rgba(139, 95, 198, 0.35) !important;
+}
+
+/* 7. Regla universal: absolutamente TODO el texto dentro de cualquier tarjeta, recuadro o contenedor */
+body.dark-mode .card *,
+body.dark-mode .tarjeta *,
+body.dark-mode .servicio *,
+body.dark-mode .tarjeta-contenido *,
+body.dark-mode .tarjeta__contenido *,
+body.dark-mode .banner-tramite *,
+body.dark-mode .noticia__contenido-blanco *,
+body.dark-mode .requisitos *,
+body.dark-mode .lista-departamentos li *,
+body.dark-mode #servicios .servicio *,
+body.dark-mode .servicios .servicio *,
+body.dark-mode #turismo .tarjeta *,
+body.dark-mode .turismo .tarjeta *,
+body.dark-mode .rejilla .tarjeta *,
+body.dark-mode .rejilla .card *,
+.dark-mode .card *,
+.dark-mode .tarjeta *,
+.dark-mode .servicio *,
+.dark-mode .tarjeta-contenido *,
+.dark-mode .tarjeta__contenido *,
+.dark-mode .banner-tramite *,
+.dark-mode .noticia__contenido-blanco *,
+.dark-mode .requisitos *,
+.dark-mode .lista-departamentos li *,
+.dark-mode #servicios .servicio *,
+.dark-mode .servicios .servicio *,
+.dark-mode #turismo .tarjeta *,
+.dark-mode .turismo .tarjeta *,
+.dark-mode .rejilla .tarjeta *,
+.dark-mode .rejilla .card *,
+[data-theme="oscuro"] .card *,
+[data-theme="oscuro"] .tarjeta *,
+[data-theme="oscuro"] .servicio *,
+[data-theme="oscuro"] .tarjeta-contenido *,
+[data-theme="oscuro"] .tarjeta__contenido *,
+[data-theme="oscuro"] .banner-tramite *,
+[data-theme="oscuro"] .noticia__contenido-blanco *,
+[data-theme="oscuro"] .requisitos *,
+[data-theme="oscuro"] .lista-departamentos li * {
+  color: #ffffff !important;
+}
+
+/* 8. Botones principales para que mantengan texto blanco legible */
+body.dark-mode .boton,
+body.dark-mode .boton--destacado,
+body.dark-mode .boton--primario,
+.dark-mode .boton,
+.dark-mode .boton--destacado,
+.dark-mode .boton--primario,
+[data-theme="oscuro"] .boton,
+[data-theme="oscuro"] .boton--destacado,
+[data-theme="oscuro"] .boton--primario {
+  background-color: #8b5fc6 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .boton:hover,
+body.dark-mode .boton--destacado:hover,
+body.dark-mode .boton--primario:hover,
+.dark-mode .boton:hover,
+.dark-mode .boton--destacado:hover,
+.dark-mode .boton--primario:hover,
+[data-theme="oscuro"] .boton:hover,
+[data-theme="oscuro"] .boton--destacado:hover,
+[data-theme="oscuro"] .boton--primario:hover {
+  background-color: #a078d6 !important;
+  color: #ffffff !important;
+}
+
+/* Pie de página en modo oscuro */
+body.dark-mode .pie,
+.dark-mode .pie,
+[data-theme="oscuro"] .pie {
+  background-color: #0b1115 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .pie *,
+.dark-mode .pie *,
+[data-theme="oscuro"] .pie * {
+  color: #ffffff !important;
+}
+
+/* ==========================================================
+   Botón alternador de tema claro / oscuro (.tema-boton)
+   ========================================================== */
+.tema-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-borde);
+  background-color: transparent;
+  color: var(--color-texto);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tema-boton:hover {
+  background-color: rgba(118, 75, 175, 0.15);
+}
+
+.tema-boton svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.tema-boton .tema-boton__sol {
+  display: none;
+}
+
+[data-theme="oscuro"] .tema-boton .tema-boton__sol,
+body.dark-mode .tema-boton .tema-boton__sol,
+.dark-mode .tema-boton .tema-boton__sol {
+  display: block;
+}
+
+[data-theme="oscuro"] .tema-boton .tema-boton__luna,
+body.dark-mode .tema-boton .tema-boton__luna,
+.dark-mode .tema-boton .tema-boton__luna {
+  display: none;
+}
+
+body.dark-mode .tema-boton,
+.dark-mode .tema-boton,
+[data-theme="oscuro"] .tema-boton {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+}
+
+/* Imágenes locales de servicios y trámites: visibles en ambos temas. */
+.imagen-tarjeta {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 0 12px;
+}
+.tarjeta:has(> .imagen-tarjeta) { display: flex; flex-direction: column; }
+.tarjeta:has(> .imagen-tarjeta) .tarjeta__enlace { margin-top: auto; }
+.tarjeta:focus-within { outline: 3px solid var(--color-acento); outline-offset: 3px; }
+
+/* Mantener margen interior cuando main combina container y seccion. */
+.pagina-tramites main.container.seccion { padding: 64px 20px; }
+
+/* Trámites: equivalentes a min-h-screen flex flex-col y main flex-1. */
+body.pagina-tramite,
+body.pagina-tramites {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+body.pagina-tramite > main,
+body.pagina-tramites > main { flex: 1; }
+body.pagina-tramite > .encabezado,
+body.pagina-tramite > .pie,
+body.pagina-tramites > .encabezado,
+body.pagina-tramites > .pie { flex-shrink: 0; }
+
+/* Contenido centrado, w-full y max-w-5xl (64rem). */
+body.pagina-tramite main.container.seccion {
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+body.pagina-tramite .tarjeta-contenido {
+  width: 100%;
+  max-width: none;
+}
+body.pagina-tramite .seccion__subtitulo { max-width: none; }
+
+/* Purple 600 y Purple 700, también sobre las reglas del modo oscuro. */
+body.pagina-tramite .requisitos li::before { color: #9333ea !important; }
+body.pagina-tramite .boton--destacado {
+  background-color: #9333ea !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(147, 51, 234, .28);
+}
+body.pagina-tramite .boton--destacado:hover,
+body.pagina-tramite .boton--destacado:focus-visible {
+  background-color: #7e22ce !important;
+}
+body.pagina-tramite .boton--destacado:focus-visible {
+  outline: 3px solid #c084fc;
+  outline-offset: 4px;
+}
+@media (max-width: 768px) {
+  body.pagina-tramite main.container.seccion { padding: 32px 20px; }
+  body.pagina-tramite .tarjeta-contenido { padding: 20px; }
+  body.pagina-tramite .encabezado__contenido {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+}
+@media (max-width: 600px) {
+  .pagina-tramites .encabezado__contenido { flex-wrap: wrap; gap: 12px; padding: 16px 20px; }
+}
+
+/* Primer nivel: toda la tarjeta enlaza al detalle del departamento. */
+#departamentos .grid-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#departamentos .grid-tarjetas > li {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#departamentos .grid-tarjetas > li:hover { transform: none; }
+#departamentos .grid-tarjetas h3 { margin: 0; }
+#departamentos .grid-tarjetas h3,
+#departamentos .grid-tarjetas p { overflow-wrap: anywhere; }
+
+/* El enlace ocupa realmente la tarjeta, sin enlaces anidados. */
+#departamentos .grid-tarjetas a::after { content: none; }
+#departamentos .grid-tarjetas .departamento__enlace {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px;
+  color: inherit;
+  text-decoration: none;
+}
+#departamentos .departamento__enlace:hover h3 { text-decoration: underline; }
+#departamentos .departamento__enlace:focus-visible {
+  outline: 3px solid var(--color-acento, #764baf);
+  outline-offset: -3px;
+}
+
+/* Segundo nivel: información ampliada y mapa que abre Google Maps. */
+.pagina-departamento main.container.seccion {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 24px;
+  padding: 64px 20px;
+}
+.detalle-departamento > .tarjeta-contenido {
+  min-width: 0;
+  max-width: none;
+  padding: 28px;
+  border: 1px solid var(--color-borde, #e2e9ee);
+  border-radius: 12px;
+  background-color: var(--color-blanco, #fff);
+  overflow-wrap: anywhere;
+}
+.detalle-departamento h1 { line-height: 1.25; }
+.detalle-departamento h2 { margin-bottom: 12px; font-size: 1.25rem; }
+.detalle-departamento p { margin-bottom: 16px; }
+.detalle-departamento__volver {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #45266b;
+  color: #fff;
+  font-weight: 600;
+}
+.mapa-enlace {
+  display: block;
+  overflow: hidden;
+  border: 2px solid var(--color-acento, #764baf);
+  border-radius: 12px;
+  cursor: pointer;
+}
+/* Los clics en la vista del mapa llegan al enlace exterior. */
+.mapa-enlace__vista {
+  display: block;
+  width: 100%;
+  height: 260px;
+  border: 0;
+  pointer-events: none;
+  background-color: #e2e9ee;
+}
+.mapa-enlace__texto {
+  display: block;
+  padding: 12px 16px;
+  background-color: #45266b;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+.mapa-enlace:hover .mapa-enlace__texto { text-decoration: underline; }
+.mapa-enlace:focus-visible,
+.detalle-departamento__volver:focus-visible {
+  outline: 3px solid var(--color-acento, #764baf);
+  outline-offset: 4px;
+}
+
+/* Redes oficiales: tamaño discreto, alineación horizontal y foco accesible. */
+.pie .pie__legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.pie .pie__redes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.pie .pie__redes a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+}
+/* Sobrescribir el blanco forzado del modo oscuro también en el ícono. */
+.pie .pie__redes a,
+.pie .pie__redes a i {
+  color: #cddfe9 !important;
+  transition: color .25s ease;
+}
+.pie .pie__redes a:hover,
+.pie .pie__redes a:hover i,
+.pie .pie__redes a:focus-visible,
+.pie .pie__redes a:focus-visible i {
+  color: #cbb2ef !important;
+}
+.pie .pie__redes a:focus-visible {
+  outline: 2px solid #cbb2ef;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pie .pie__redes a,
+  .pie .pie__redes a i { transition: none; }
+}
+
+@media (min-width: 1400px) {
+  #departamentos .grid-tarjetas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  #departamentos .grid-tarjetas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  #departamentos .grid-tarjetas {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  #departamentos .grid-tarjetas .departamento__enlace { padding: 16px; }
+  .pagina-departamento main.container.seccion {
+    grid-template-columns: 1fr;
+    padding: 32px 20px;
+  }
+  .detalle-departamento > .tarjeta-contenido { padding: 20px; }
+  .pagina-departamento .encabezado__contenido {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+}
+
+/* Encabezado común. Utilidades responsive usadas: hidden, block, md:flex, md:hidden. */
+[x-cloak] { display: none !important; }
+.encabezado.encabezado-adaptable .encabezado__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 72px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+.encabezado-adaptable .marca { min-width: 0; flex-shrink: 1; }
+.encabezado-adaptable .marca__logo {
+  display: block;
+  width: auto;
+  height: 48px;
+  max-width: 100%;
+  object-fit: contain;
+}
+.encabezado-adaptable .encabezado__controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.encabezado-adaptable .tema-boton { flex-shrink: 0; }
+.encabezado.encabezado-adaptable .menu-escritorio.hidden { display: none; }
+.encabezado-adaptable .menu-boton.block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  background: transparent;
+  color: #45266b;
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.pagina-inicio .encabezado-adaptable .menu-boton,
+.dark-mode .encabezado-adaptable .menu-boton,
+[data-theme="oscuro"] .encabezado-adaptable .menu-boton { color: #fff; }
+.encabezado-adaptable .menu-boton:hover { background-color: rgba(139, 95, 198, .15); }
+.encabezado-adaptable .menu-boton:focus-visible,
+.encabezado-adaptable nav a:focus-visible {
+  outline: 3px solid #a078d6;
+  outline-offset: 3px;
+}
+.encabezado-adaptable .menu-movil {
+  width: 100%;
+  padding: 8px 0 16px;
+  background-color: var(--color-blanco, #fff);
+  border-top: 1px solid var(--color-borde, #e2e9ee);
+  transform-origin: top;
+}
+.pagina-inicio .encabezado-adaptable .menu-movil {
+  background-color: #2f1a4a;
+  border-color: rgba(255, 255, 255, .2);
+}
+.encabezado-adaptable .menu-movil__enlaces {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.encabezado-adaptable .menu-movil a {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--color-texto, #1c2b33);
+  font-size: 1rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.pagina-inicio .encabezado-adaptable .menu-movil a { color: #fff; }
+.encabezado-adaptable .menu-movil a:hover { background-color: rgba(139, 95, 198, .18); }
+.encabezado-adaptable .menu-movil .destacado { background-color: #45266b; color: #fff; }
+.menu-transicion { transition: opacity .18s ease, transform .18s ease; }
+.menu-oculto { opacity: 0; transform: translateY(-6px); }
+.menu-visible { opacity: 1; transform: translateY(0); }
+@media (min-width: 768px) {
+  .encabezado.encabezado-adaptable .menu-escritorio.md\:flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 4px;
+    width: auto;
+    margin-left: auto;
+  }
+  .encabezado.encabezado-adaptable .menu-escritorio a {
+    display: block;
+    width: auto;
+    padding: 8px 10px;
+    white-space: nowrap;
+    font-size: .88rem;
+  }
+  .encabezado-adaptable .menu-boton.md\:hidden,
+  .encabezado-adaptable .menu-movil.md\:hidden { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-transicion { transition: none; }
+}
+
+/* Navegación por divulgación: Trámites, Departamentos y Servicios. */
+.encabezado.encabezado-adaptable { z-index: 1000; }
+.encabezado-adaptable .navegacion-desplegable { position: relative; }
+.encabezado-adaptable .desplegable__boton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: transparent;
+  color: var(--color-texto-suave, #5a6b74);
+  font: inherit;
+  font-size: .88rem;
+  line-height: 1.5;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.pagina-inicio .encabezado-adaptable .desplegable__boton,
+.dark-mode .encabezado-adaptable .desplegable__boton { color: #fff; }
+.encabezado-adaptable .desplegable__boton:hover { background: rgba(139,95,198,.15); }
+.encabezado-adaptable .desplegable__boton:focus-visible,
+.encabezado-adaptable .menu-cerrar:focus-visible {
+  outline: 3px solid #a078d6;
+  outline-offset: 3px;
+}
+.desplegable__indicador { flex-shrink: 0; width: 16px; height: 16px; transition: transform .15s ease; }
+.esta-abierto > .desplegable__boton .desplegable__indicador { transform: rotate(180deg); }
+.encabezado-adaptable .desplegable__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 60;
+  width: 25rem;
+  max-width: calc(100vw - 40px);
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid var(--color-borde, #e2e9ee);
+  border-radius: 12px;
+  background: var(--color-blanco, #fff);
+  box-shadow: 0 12px 32px rgba(47,26,74,.2);
+}
+.encabezado.encabezado-adaptable .desplegable__panel a {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--color-texto, #1c2b33);
+  font-size: .9rem;
+  line-height: 1.5;
+  white-space: normal;
+}
+.encabezado-adaptable .desplegable__panel a:hover { background-color: rgba(139,95,198,.15); }
+.pagina-inicio .encabezado-adaptable .desplegable__panel { background: #2f1a4a; border-color: #764baf; }
+.pagina-inicio .encabezado-adaptable .desplegable__panel a { color: #fff; }
+.encabezado-adaptable .menu-boton svg { width: 24px; height: 24px; }
+
+/* Panel móvil modal: fondo bloqueado y desplazamiento limitado al panel. */
+body.overflow-hidden,
+html:has(> body.overflow-hidden) { overflow: hidden !important; }
+.encabezado-adaptable .menu-movil-dialogo {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  justify-content: flex-end;
+  background-color: rgba(11,17,21,.6);
+}
+.menu-movil-panel {
+  width: min(100%, 420px);
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px;
+  background: var(--color-blanco, #fff);
+  color: var(--color-texto, #1c2b33);
+  box-shadow: -8px 0 32px rgba(0,0,0,.2);
+}
+.pagina-inicio .menu-movil-panel { background: #2f1a4a; color: #fff; }
+.menu-movil__cabecera { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.menu-movil__cabecera h2 { font-size: 1.15rem; line-height: 1.4; }
+.menu-cerrar { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; border: 1px solid currentColor; border-radius: 8px; color: inherit; background: transparent; font-size: 24px; cursor: pointer; }
+.menu-movil-panel .menu-movil__enlaces { gap: 8px; }
+.menu-movil-panel .menu-movil__enlaces > a,
+.menu-movil-panel .desplegable__boton { display: flex; width: 100%; padding: 12px; color: inherit; font-size: 1rem; border-radius: 8px; }
+.menu-movil-panel .menu-movil__enlaces > a:hover { background: rgba(139,95,198,.15); }
+.menu-movil-panel .desplegable__panel { position: static; width: 100%; max-width: 100%; max-height: none; margin-top: 4px; box-shadow: none; }
+@media (min-width: 768px) {
+  .encabezado-adaptable .menu-movil-dialogo.md\:hidden { display: none !important; }
+  .encabezado-adaptable .menu-escritorio .navegacion-desplegable:nth-of-type(n+2) .desplegable__panel { left: auto; right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desplegable__indicador { transition: none; }
+  .menu-movil-dialogo, .desplegable__panel { transition-duration: 0ms !important; }
+}
+
+/* Noticias: tarjetas navegables y vistas con el contenido de portada. */
+.noticia__enlace { display: block; width: 100%; height: 100%; color: inherit; }
+.noticia__enlace:focus-visible { outline: 4px solid #a078d6; outline-offset: -4px; }
+.pagina-noticia main.container.seccion { width: 100%; max-width: 60rem; padding: 48px 20px; }
+.noticia-detalle > .tarjeta-contenido { width: 100%; max-width: none; padding: 28px; }
+.noticia-detalle h1 { font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.3; overflow-wrap: anywhere; }
+.noticia-detalle__categoria { color: #7e22ce; font-weight: 600; margin-bottom: 12px; }
+.noticia-detalle figure { margin: 24px 0; }
+.noticia-detalle figure img { display: block; width: 100%; max-height: 32rem; object-fit: contain; border-radius: 12px; }
+.noticia-detalle figcaption { margin-top: 8px; font-size: .85rem; color: var(--color-texto-suave); }
+.noticia-detalle__volver { display: inline-block; padding: 12px 20px; border-radius: 8px; background-color: #45266b; color: #fff; }
+@media (max-width: 640px) { .noticia-detalle > .tarjeta-contenido { padding: 20px; } }
+
+/* Estructura común: el contenido mantiene el footer al final de la ventana. */
+body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+body > main { flex: 1; }
+body > .encabezado, body > .pie { flex-shrink: 0; }
+
+/* Guía única para los accesos online y la información presencial. */
+.guia-unificada > section { margin-top: 36px; scroll-margin-top: 24px; }
+.guia-unificada > section > h2 { margin-bottom: 20px; }
+.guia-accesos { display: flex; flex-wrap: wrap; gap: 12px; }
+.guia-accesos a { padding: 10px 16px; border: 1px solid #9333ea; border-radius: 10px; color: #6b21a8; font-weight: 600; }
+.dark-mode .guia-accesos a { color: #d8b4fe; }
+
+/* Paleta institucional y alineación de todas las vistas de departamentos. */
+body .seccion :is(h1, h2, h3),
+body.pagina-departamento .detalle-departamento :is(h1, h2, h3) { color: #581c87; }
+body.dark-mode .seccion :is(h1, h2, h3),
+body.pagina-departamento.dark-mode .detalle-departamento :is(h1, h2, h3),
+[data-theme="oscuro"] body .seccion :is(h1, h2, h3) { color: #d8b4fe !important; }
+.pagina-departamento .detalle-departamento { align-items: start; }
+.detalle-departamento > .tarjeta-contenido { align-self: start; margin-top: 0; }
+
+/* Trámites: dos áreas, con proporción 2/3 + 1/3 a partir de lg. */
+body.tramite-redisenado .tramite-contenedor { display: flex; flex-direction: column; flex: 1; }
+body.tramite-redisenado.dark-mode,
+[data-theme="oscuro"] body.tramite-redisenado { background-color: #0f172a !important; }
+body.tramite-redisenado .tramite-distribucion {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 32px 16px;
+  flex: 1;
+}
+.tramite-principal, .tramite-lateral { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.tramite-principal h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.2; color: #581c87; margin: 0 0 12px; }
+.tramite-principal > header > p { color: var(--color-texto-suave); }
+body.tramite-redisenado .tramite-panel { width: 100%; max-width: none; padding: 24px; overflow-wrap: anywhere; }
+.tramite-panel :is(h2, h3) { color: #6b21a8; line-height: 1.4; }
+.tramite-panel h2 { font-size: 1.15rem; margin: 0 0 16px; }
+.tramite-panel h3 { font-size: 1rem; margin: 0 0 4px; }
+.tramite-panel p { margin: 0 0 12px; }
+.tramite-panel p:last-child { margin-bottom: 0; }
+.tramite-panel address { font-style: normal; margin-bottom: 12px; }
+body.tramite-redisenado.dark-mode .tramite-principal h1,
+body.tramite-redisenado.dark-mode .tramite-panel :is(h2, h3) { color: #d8b4fe !important; }
+body.tramite-redisenado.dark-mode .tramite-panel { background-color: #1e293b !important; border-color: #334155 !important; }
+body.tramite-redisenado .requisitos li::before { color: #9333ea !important; }
+.tramite-panel-pasos { display: flex; flex-direction: column; gap: 24px; }
+.tramite-panel-pasos > h2 { margin-bottom: 0; }
+.tramite-pasos { display: grid; gap: 24px; margin: 0; padding: 0; list-style: none; }
+.tramite-pasos > li { display: flex; align-items: flex-start; gap: 16px; }
+.tramite-pasos > li > div { min-width: 0; }
+.tramite-pasos p { margin-bottom: 0; }
+.tramite-paso__numero { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background-color: #f3e8ff; font-weight: 700; }
+body.tramite-redisenado .tramite-pasos .tramite-paso__numero { color: #7e22ce !important; }
+.tramite-panel-pasos > .tramite-accion { margin-top: 0; }
+body.tramite-redisenado .tramite-boton.mt-6 { margin-top: 24px; }
+.tramite-boton { display: inline-flex; align-items: center; justify-content: center; border: 0; padding: 14px 32px; border-radius: 12px; background: #9333ea; color: #fff; font: inherit; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(88, 28, 135, .18); transition: background-color .2s ease; }
+.tramite-boton:hover { background: #7e22ce; }
+.tramite-boton:focus-visible { outline: 3px solid #a855f7; outline-offset: 4px; }
+@media (min-width: 1024px) {
+  body.tramite-redisenado .tramite-distribucion { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tramite-principal { grid-column: span 2; }
+  .tramite-lateral { grid-column: span 1; }
+}
+@media (max-width: 640px) {
+  body.tramite-redisenado .tramite-panel { padding: 20px; }
+  .tramite-boton { width: 100%; }
+}
+
+/* Acción principal de trámites: ancho completo en móvil y automático desde sm. */
+body.tramite-redisenado .tramite-boton { width: 100%; }
+@media (min-width: 640px) {
+  body.tramite-redisenado .tramite-boton { width: auto; }
+}
+
+/* Fotografías o ilustraciones gastronómicas referenciales, integradas a las tarjetas. */
+#pagina-turismo .turismo-gastronomia .h-44 { height: 11rem; }
+#pagina-turismo .turismo-gastronomia .rounded-t-xl { border-radius: 12px 12px 0 0; }
+#pagina-turismo .turismo-tarjeta--enlace:hover { box-shadow: 0 20px 25px -5px rgba(69,38,107,.18), 0 8px 10px -6px rgba(69,38,107,.14); }
+
+/* Utilidades de Turismo consolidadas; limitadas al contenedor #pagina-turismo. */
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }#pagina-turismo .mx-auto{margin-left:auto;margin-right:auto}#pagina-turismo .mb-2{margin-bottom:.5rem}#pagina-turismo .mt-auto{margin-top:auto}#pagina-turismo .flex{display:flex}#pagina-turismo .grid{display:grid}#pagina-turismo .h-48{height:12rem}#pagina-turismo .h-5{height:1.25rem}#pagina-turismo .w-5{width:1.25rem}#pagina-turismo .w-full{width:100%}#pagina-turismo .min-w-0{min-width:0}#pagina-turismo .max-w-3xl{max-width:48rem}#pagina-turismo .max-w-7xl{max-width:80rem}#pagina-turismo .flex-1{flex:1 1 0%}#pagina-turismo .shrink-0{flex-shrink:0}#pagina-turismo .transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}#pagina-turismo .cursor-pointer{cursor:pointer}#pagina-turismo .grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}#pagina-turismo .flex-col{flex-direction:column}#pagina-turismo .items-center{align-items:center}#pagina-turismo .justify-center{justify-content:center}#pagina-turismo .gap-2{gap:.5rem}#pagina-turismo .gap-4{gap:1rem}#pagina-turismo .gap-6{gap:1.5rem}#pagina-turismo :is(.space-y-12>:not([hidden])~:not([hidden])){--tw-space-y-reverse:0;margin-top:calc(3rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem*var(--tw-space-y-reverse))}#pagina-turismo :is(.space-y-2>:not([hidden])~:not([hidden])){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}#pagina-turismo :is(.space-y-4>:not([hidden])~:not([hidden])){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}#pagina-turismo :is(.space-y-6>:not([hidden])~:not([hidden])){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}#pagina-turismo .self-start{align-self:flex-start}#pagina-turismo .rounded-2xl{border-radius:1rem}#pagina-turismo .rounded-full{border-radius:9999px}#pagina-turismo .rounded-lg{border-radius:.5rem}#pagina-turismo .rounded-xl{border-radius:.75rem}#pagina-turismo .border{border-width:1px}#pagina-turismo .border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240/var(--tw-border-opacity,1))}#pagina-turismo .bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255/var(--tw-bg-opacity,1))}#pagina-turismo .bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255/var(--tw-bg-opacity,1))}#pagina-turismo .bg-purple-600{--tw-bg-opacity:1;background-color:rgb(147 51 234/var(--tw-bg-opacity,1))}#pagina-turismo .bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}#pagina-turismo .object-cover{-o-object-fit:cover;object-fit:cover}#pagina-turismo .p-5{padding:1.25rem}#pagina-turismo .p-6{padding:1.5rem}#pagina-turismo .px-3{padding-left:.75rem;padding-right:.75rem}#pagina-turismo .px-4{padding-left:1rem;padding-right:1rem}#pagina-turismo .py-1{padding-top:.25rem;padding-bottom:.25rem}#pagina-turismo .py-12{padding-top:3rem;padding-bottom:3rem}#pagina-turismo .py-2{padding-top:.5rem;padding-bottom:.5rem}#pagina-turismo .text-center{text-align:center}#pagina-turismo .text-2xl{font-size:1.5rem;line-height:2rem}#pagina-turismo .text-3xl{font-size:1.875rem;line-height:2.25rem}#pagina-turismo .text-base{font-size:1rem;line-height:1.5rem}#pagina-turismo .text-sm{font-size:.875rem;line-height:1.25rem}#pagina-turismo .text-xl{font-size:1.25rem;line-height:1.75rem}#pagina-turismo .text-xs{font-size:.75rem;line-height:1rem}#pagina-turismo .font-bold{font-weight:700}#pagina-turismo .font-medium{font-weight:500}#pagina-turismo .font-semibold{font-weight:600}#pagina-turismo .uppercase{text-transform:uppercase}#pagina-turismo .not-italic{font-style:normal}#pagina-turismo .leading-6{line-height:1.5rem}#pagina-turismo .leading-7{line-height:1.75rem}#pagina-turismo .tracking-tight{letter-spacing:-.025em}#pagina-turismo .tracking-wide{letter-spacing:.025em}#pagina-turismo .tracking-widest{letter-spacing:.1em}#pagina-turismo .text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234/var(--tw-text-opacity,1))}#pagina-turismo .text-purple-700{--tw-text-opacity:1;color:rgb(126 34 206/var(--tw-text-opacity,1))}#pagina-turismo .text-purple-900{--tw-text-opacity:1;color:rgb(88 28 135/var(--tw-text-opacity,1))}#pagina-turismo .text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105/var(--tw-text-opacity,1))}#pagina-turismo .text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42/var(--tw-text-opacity,1))}#pagina-turismo .text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}#pagina-turismo .underline{text-decoration-line:underline}#pagina-turismo .underline-offset-2{text-underline-offset:2px}#pagina-turismo .shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}#pagina-turismo .transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}#pagina-turismo .transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}#pagina-turismo .duration-300{transition-duration:.3s}#pagina-turismo .hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}#pagina-turismo .hover\:bg-purple-700:hover{--tw-bg-opacity:1;background-color:rgb(126 34 206/var(--tw-bg-opacity,1))}#pagina-turismo .hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}#pagina-turismo .focus-visible\:outline:focus-visible{outline-style:solid}#pagina-turismo .focus-visible\:outline-2:focus-visible{outline-width:2px}#pagina-turismo .focus-visible\:outline-offset-4:focus-visible{outline-offset:4px}#pagina-turismo .focus-visible\:outline-purple-500:focus-visible{outline-color:#a855f7}@media (min-width:640px){#pagina-turismo .sm\:w-fit{width:-moz-fit-content;width:fit-content}#pagina-turismo .sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}#pagina-turismo .sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}#pagina-turismo .sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}}@media (min-width:768px){#pagina-turismo .md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){#pagina-turismo .lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}#pagina-turismo .lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}#pagina-turismo .lg\:px-8{padding-left:2rem;padding-right:2rem}}#pagina-turismo .dark\:border-slate-700:where(:is(.dark-mode,[data-theme=oscuro]),:is(.dark-mode,[data-theme=oscuro]) *){--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}#pagina-turismo .dark\:bg-purple-900\/50:where(:is(.dark-mode,[data-theme=oscuro]),:is(.dark-mode,[data-theme=oscuro]) *){background-color:rgba(88,28,135,.5)}#pagina-turismo .dark\:bg-slate-800:where(:is(.dark-mode,[data-theme=oscuro]),:is(.dark-mode,[data-theme=oscuro]) *){--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}#pagina-turismo .dark\:text-purple-300:where(:is(.dark-mode,[data-theme=oscuro]),:is(.dark-mode,[data-theme=oscuro]) *){--tw-text-opacity:1;color:rgb(216 180 254/var(--tw-text-opacity,1))}#pagina-turismo .dark\:text-slate-300:where(:is(.dark-mode,[data-theme=oscuro]),:is(.dark-mode,[data-theme=oscuro]) *){--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}#pagina-turismo .dark\:text-white:where(:is(.dark-mode,[data-theme=oscuro]),:is(.dark-mode,[data-theme=oscuro]) *){--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}

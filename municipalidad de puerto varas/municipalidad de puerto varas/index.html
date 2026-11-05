@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sitio web de la Municipalidad de Puerto Varas: trámites, direcciones, servicios y transparencia.">
+  <title>Municipalidad de Puerto Varas</title>
+  <style>
+    /* ===== Variables de diseño ===== */
+    :root {
+      --color-primario: #45266b;
+      --color-primario-oscuro: #2f1a4a;
+      --color-acento: #764baf;
+      --color-texto: #1c2b33;
+      --color-texto-suave: #5a6b74;
+      --color-fondo: #f5f8fa;
+      --color-blanco: #ffffff;
+      --color-borde: #e2e9ee;
+      --sombra: 0 4px 16px rgba(69, 38, 107, 0.12);
+      --radio: 12px;
+      --transicion: all 0.25s ease;
+    }
+
+    /* ==========================================================
+       Municipalidad de Puerto Varas - Estilos Modo Oscuro
+       Corrección integral de contraste para modo oscuro (.dark-mode)
+       ========================================================== */
+    
+    /* Variables para modo oscuro */
+    [data-theme="oscuro"],
+    body.dark-mode,
+    .dark-mode {
+      --color-primario: #8b5fc6;
+      --color-primario-oscuro: #2f1a4a;
+      --color-acento: #a078d6;
+      --color-texto: #ffffff;
+      --color-texto-suave: #e6edf3;
+      --color-fondo: #10181d;
+      --color-blanco: #1a2227;
+      --color-borde: #2d3a42;
+      --sombra: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Fondo general de la página y texto base */
+    body.dark-mode,
+    .dark-mode,
+    [data-theme="oscuro"] body {
+      background-color: #10181d !important;
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .encabezado,
+    .dark-mode .encabezado {
+      background-color: #10181d !important;
+      border-bottom-color: #2d3a42 !important;
+    }
+
+    /* Logo en modo oscuro */
+    body.dark-mode header .marca img,
+    body.dark-mode header .marca__logo,
+    body.dark-mode header img[src*="logo"],
+    body.dark-mode .encabezado .marca__logo,
+    body.dark-mode .encabezado .marca img,
+    body.dark-mode .encabezado img[src*="logo"],
+    body.dark-mode .marca__logo,
+    body.dark-mode .marca img,
+    .dark-mode header .marca img,
+    .dark-mode header .marca__logo,
+    .dark-mode header img[src*="logo"],
+    .dark-mode .encabezado .marca__logo,
+    .dark-mode .encabezado .marca img,
+    .dark-mode .encabezado img[src*="logo"],
+    .dark-mode .marca__logo,
+    .dark-mode .marca img,
+    [data-theme="oscuro"] header .marca img,
+    [data-theme="oscuro"] header .marca__logo,
+    [data-theme="oscuro"] .encabezado .marca__logo,
+    [data-theme="oscuro"] .marca__logo {
+      filter: brightness(0) invert(1) !important;
+      -webkit-filter: brightness(0) invert(1) !important;
+      opacity: 1 !important;
+      transition: filter 0.25s ease;
+    }
+    
+    body.dark-mode .navegacion a,
+    .dark-mode .navegacion a {
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .seccion h1,
+    body.dark-mode .seccion h2,
+    body.dark-mode .seccion h3,
+    body.dark-mode .seccion p,
+    body.dark-mode .seccion__titulo,
+    body.dark-mode .seccion__subtitulo,
+    body.dark-mode .noticias__titulo,
+    body.dark-mode .marca,
+    .dark-mode .seccion h1,
+    .dark-mode .seccion h2,
+    .dark-mode .seccion h3,
+    .dark-mode .seccion p,
+    .dark-mode .seccion__titulo,
+    .dark-mode .seccion__subtitulo,
+    .dark-mode .noticias__titulo,
+    .dark-mode .marca {
+      color: #ffffff !important;
+    }
+    
+    /* ==========================================================
+       FONDOS OSCUROS PARA CUALQUIER TIPO DE TARJETA, RECUADRO O CONTENEDOR
+       ========================================================== */
+    body.dark-mode .card,
+    body.dark-mode .tarjeta,
+    body.dark-mode .servicio,
+    body.dark-mode .tarjeta-contenido,
+    body.dark-mode .tarjeta__contenido,
+    body.dark-mode .banner-tramite,
+    body.dark-mode .lista-departamentos li,
+    body.dark-mode .noticia__contenido-blanco,
+    body.dark-mode .seccion--alterna,
+    body.dark-mode #servicios .servicio,
+    body.dark-mode .servicios .servicio,
+    body.dark-mode #servicios .card,
+    body.dark-mode .servicios .card,
+    body.dark-mode #servicios .tarjeta,
+    body.dark-mode .servicios .tarjeta,
+    body.dark-mode #turismo .tarjeta,
+    body.dark-mode .turismo .tarjeta,
+    body.dark-mode #turismo .card,
+    body.dark-mode .turismo .card,
+    body.dark-mode .rejilla .tarjeta,
+    body.dark-mode .rejilla .card,
+    .dark-mode .card,
+    .dark-mode .tarjeta,
+    .dark-mode .servicio,
+    .dark-mode .tarjeta-contenido,
+    .dark-mode .tarjeta__contenido,
+    .dark-mode .banner-tramite,
+    .dark-mode .lista-departamentos li,
+    .dark-mode .noticia__contenido-blanco,
+    .dark-mode .seccion--alterna,
+    .dark-mode #servicios .servicio,
+    .dark-mode .servicios .servicio,
+    .dark-mode #servicios .card,
+    .dark-mode .servicios .card,
+    .dark-mode #servicios .tarjeta,
+    .dark-mode .servicios .tarjeta,
+    .dark-mode #turismo .tarjeta,
+    .dark-mode .turismo .tarjeta,
+    .dark-mode #turismo .card,
+    .dark-mode .turismo .card,
+    .dark-mode .rejilla .tarjeta,
+    .dark-mode .rejilla .card,
+    [data-theme="oscuro"] .card,
+    [data-theme="oscuro"] .tarjeta,
+    [data-theme="oscuro"] .servicio,
+    [data-theme="oscuro"] .tarjeta-contenido,
+    [data-theme="oscuro"] .tarjeta__contenido,
+    [data-theme="oscuro"] .banner-tramite,
+    [data-theme="oscuro"] .lista-departamentos li,
+    [data-theme="oscuro"] .noticia__contenido-blanco {
+      background-color: #1a2227 !important;
+      background-image: none !important;
+      border-color: #2d3a42 !important;
+    }
+    
+    body.dark-mode .lista-departamentos li,
+    .dark-mode .lista-departamentos li,
+    [data-theme="oscuro"] .lista-departamentos li {
+      border-left-color: #8b5fc6 !important;
+    }
+    
+    body.dark-mode .lista-departamentos li:hover,
+    .dark-mode .lista-departamentos li:hover {
+      background-color: #232d34 !important;
+      border-left-color: #a078d6 !important;
+    }
+    
+    /* ==========================================================
+       TEXTO EN BLANCO (#ffffff !important) DENTRO DE CUALQUIER TARJETA,
+       RECUADRO O CONTENEDOR (h1, h2, h3, p, li, a, span)
+       ========================================================== */
+    
+    /* 1. Títulos (h1, h2, h3, h4) */
+    body.dark-mode .card h1, body.dark-mode .card h2, body.dark-mode .card h3, body.dark-mode .card h4,
+    body.dark-mode .tarjeta h1, body.dark-mode .tarjeta h2, body.dark-mode .tarjeta h3, body.dark-mode .tarjeta h4,
+    body.dark-mode .servicio h1, body.dark-mode .servicio h2, body.dark-mode .servicio h3, body.dark-mode .servicio h4,
+    body.dark-mode .tarjeta-contenido h1, body.dark-mode .tarjeta-contenido h2, body.dark-mode .tarjeta-contenido h3, body.dark-mode .tarjeta-contenido h4,
+    body.dark-mode .banner-tramite h1, body.dark-mode .banner-tramite h2, body.dark-mode .banner-tramite h3, body.dark-mode .banner-tramite h4,
+    body.dark-mode .noticia__contenido-blanco h1, body.dark-mode .noticia__contenido-blanco h2, body.dark-mode .noticia__contenido-blanco h3, body.dark-mode .noticia__contenido-blanco h4,
+    body.dark-mode .noticia__titulo,
+    body.dark-mode .lista-departamentos h1, body.dark-mode .lista-departamentos h2, body.dark-mode .lista-departamentos h3,
+    body.dark-mode #servicios h1, body.dark-mode #servicios h2, body.dark-mode #servicios h3,
+    body.dark-mode .servicios h1, body.dark-mode .servicios h2, body.dark-mode .servicios h3,
+    body.dark-mode #turismo h1, body.dark-mode #turismo h2, body.dark-mode #turismo h3,
+    body.dark-mode .turismo h1, body.dark-mode .turismo h2, body.dark-mode .turismo h3,
+    body.dark-mode #departamentos h1, body.dark-mode #departamentos h2, body.dark-mode #departamentos h3,
+    .dark-mode .card h1, .dark-mode .card h2, .dark-mode .card h3, .dark-mode .card h4,
+    .dark-mode .tarjeta h1, .dark-mode .tarjeta h2, .dark-mode .tarjeta h3, .dark-mode .tarjeta h4,
+    .dark-mode .servicio h1, .dark-mode .servicio h2, .dark-mode .servicio h3, .dark-mode .servicio h4,
+    .dark-mode .tarjeta-contenido h1, .dark-mode .tarjeta-contenido h2, .dark-mode .tarjeta-contenido h3, .dark-mode .tarjeta-contenido h4,
+    .dark-mode .banner-tramite h1, .dark-mode .banner-tramite h2, .dark-mode .banner-tramite h3, .dark-mode .banner-tramite h4,
+    .dark-mode .noticia__contenido-blanco h1, .dark-mode .noticia__contenido-blanco h2, .dark-mode .noticia__contenido-blanco h3, .dark-mode .noticia__contenido-blanco h4,
+    .dark-mode .noticia__titulo,
+    .dark-mode .lista-departamentos h1, .dark-mode .lista-departamentos h2, .dark-mode .lista-departamentos h3,
+    .dark-mode #servicios h1, .dark-mode #servicios h2, .dark-mode #servicios h3,
+    .dark-mode .servicios h1, .dark-mode .servicios h2, .dark-mode .servicios h3,
+    .dark-mode #turismo h1, .dark-mode #turismo h2, .dark-mode #turismo h3,
+    .dark-mode .turismo h1, .dark-mode .turismo h2, .dark-mode .turismo h3,
+    .dark-mode #departamentos h1, .dark-mode #departamentos h2, .dark-mode #departamentos h3,
+    [data-theme="oscuro"] .card h1, [data-theme="oscuro"] .card h2, [data-theme="oscuro"] .card h3,
+    [data-theme="oscuro"] .tarjeta h1, [data-theme="oscuro"] .tarjeta h2, [data-theme="oscuro"] .tarjeta h3,
+    [data-theme="oscuro"] .servicio h1, [data-theme="oscuro"] .servicio h2, [data-theme="oscuro"] .servicio h3,
+    [data-theme="oscuro"] .tarjeta-contenido h1, [data-theme="oscuro"] .tarjeta-contenido h2, [data-theme="oscuro"] .tarjeta-contenido h3,
+    [data-theme="oscuro"] .banner-tramite h1, [data-theme="oscuro"] .banner-tramite h2, [data-theme="oscuro"] .banner-tramite h3,
+    [data-theme="oscuro"] .noticia__contenido-blanco h1, [data-theme="oscuro"] .noticia__contenido-blanco h2, [data-theme="oscuro"] .noticia__contenido-blanco h3,
+    [data-theme="oscuro"] .noticia__titulo {
+      color: #ffffff !important;
+    }
+    
+    /* 2. Párrafos (p) */
+    body.dark-mode .card p,
+    body.dark-mode .tarjeta p,
+    body.dark-mode .servicio p,
+    body.dark-mode .tarjeta-contenido p,
+    body.dark-mode .banner-tramite p,
+    body.dark-mode .noticia__contenido-blanco p,
+    body.dark-mode .lista-departamentos p,
+    body.dark-mode #servicios p,
+    body.dark-mode .servicios p,
+    body.dark-mode #turismo p,
+    body.dark-mode .turismo p,
+    .dark-mode .card p,
+    .dark-mode .tarjeta p,
+    .dark-mode .servicio p,
+    .dark-mode .tarjeta-contenido p,
+    .dark-mode .banner-tramite p,
+    .dark-mode .noticia__contenido-blanco p,
+    .dark-mode .lista-departamentos p,
+    .dark-mode #servicios p,
+    .dark-mode .servicios p,
+    .dark-mode #turismo p,
+    .dark-mode .turismo p,
+    [data-theme="oscuro"] .card p,
+    [data-theme="oscuro"] .tarjeta p,
+    [data-theme="oscuro"] .servicio p,
+    [data-theme="oscuro"] .tarjeta-contenido p,
+    [data-theme="oscuro"] .banner-tramite p,
+    [data-theme="oscuro"] .noticia__contenido-blanco p {
+      color: #ffffff !important;
+    }
+    
+    /* 3. Listas y listas de requisitos (li, ul) */
+    body.dark-mode .card li,
+    body.dark-mode .tarjeta li,
+    body.dark-mode .servicio li,
+    body.dark-mode .tarjeta-contenido li,
+    body.dark-mode .banner-tramite li,
+    body.dark-mode .requisitos li,
+    body.dark-mode .requisitos li::before,
+    body.dark-mode .requisitos,
+    body.dark-mode .lista-departamentos li,
+    .dark-mode .card li,
+    .dark-mode .tarjeta li,
+    .dark-mode .servicio li,
+    .dark-mode .tarjeta-contenido li,
+    .dark-mode .banner-tramite li,
+    .dark-mode .requisitos li,
+    .dark-mode .requisitos li::before,
+    .dark-mode .requisitos,
+    .dark-mode .lista-departamentos li,
+    [data-theme="oscuro"] .card li,
+    [data-theme="oscuro"] .tarjeta li,
+    [data-theme="oscuro"] .servicio li,
+    [data-theme="oscuro"] .tarjeta-contenido li,
+    [data-theme="oscuro"] .banner-tramite li,
+    [data-theme="oscuro"] .requisitos li,
+    [data-theme="oscuro"] .requisitos li::before,
+    [data-theme="oscuro"] .lista-departamentos li {
+      color: #ffffff !important;
+    }
+    
+    /* 4. Enlaces (a), enlaces 'Ingresar' y nombres de direcciones municipales */
+    body.dark-mode .card a,
+    body.dark-mode .tarjeta a,
+    body.dark-mode .servicio a,
+    body.dark-mode .tarjeta-contenido a,
+    body.dark-mode .banner-tramite a,
+    body.dark-mode .tarjeta__enlace,
+    body.dark-mode .servicio__enlace,
+    body.dark-mode .lista-departamentos a,
+    body.dark-mode .lista-departamentos a:hover,
+    body.dark-mode .lista-departamentos li a,
+    .dark-mode .card a,
+    .dark-mode .tarjeta a,
+    .dark-mode .servicio a,
+    .dark-mode .tarjeta-contenido a,
+    .dark-mode .banner-tramite a,
+    .dark-mode .tarjeta__enlace,
+    .dark-mode .servicio__enlace,
+    .dark-mode .lista-departamentos a,
+    .dark-mode .lista-departamentos a:hover,
+    .dark-mode .lista-departamentos li a,
+    [data-theme="oscuro"] .card a,
+    [data-theme="oscuro"] .tarjeta a,
+    [data-theme="oscuro"] .servicio a,
+    [data-theme="oscuro"] .tarjeta-contenido a,
+    [data-theme="oscuro"] .banner-tramite a,
+    [data-theme="oscuro"] .tarjeta__enlace,
+    [data-theme="oscuro"] .servicio__enlace,
+    [data-theme="oscuro"] .lista-departamentos a,
+    [data-theme="oscuro"] .lista-departamentos a:hover {
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .tarjeta__enlace:hover,
+    body.dark-mode .servicio__enlace:hover,
+    .dark-mode .tarjeta__enlace:hover,
+    .dark-mode .servicio__enlace:hover {
+      color: #ffffff !important;
+      text-decoration: underline !important;
+    }
+    
+    /* 5. Spans y etiquetas dentro de tarjetas o contenedores */
+    body.dark-mode .card span,
+    body.dark-mode .tarjeta span,
+    body.dark-mode .servicio span,
+    body.dark-mode .tarjeta-contenido span,
+    body.dark-mode .banner-tramite span,
+    body.dark-mode .noticia__contenido-blanco span,
+    body.dark-mode .lista-departamentos span,
+    .dark-mode .card span,
+    .dark-mode .tarjeta span,
+    .dark-mode .servicio span,
+    .dark-mode .tarjeta-contenido span,
+    .dark-mode .banner-tramite span,
+    .dark-mode .noticia__contenido-blanco span,
+    .dark-mode .lista-departamentos span,
+    [data-theme="oscuro"] .card span,
+    [data-theme="oscuro"] .tarjeta span,
+    [data-theme="oscuro"] .servicio span,
+    [data-theme="oscuro"] .tarjeta-contenido span,
+    [data-theme="oscuro"] .banner-tramite span,
+    [data-theme="oscuro"] .noticia__contenido-blanco span {
+      color: #ffffff !important;
+    }
+    
+    /* 6. Íconos dentro de tarjetas */
+    body.dark-mode .tarjeta__icono,
+    body.dark-mode .servicio__icono,
+    .dark-mode .tarjeta__icono,
+    .dark-mode .servicio__icono,
+    [data-theme="oscuro"] .tarjeta__icono,
+    [data-theme="oscuro"] .servicio__icono {
+      color: #ffffff !important;
+      background-color: rgba(139, 95, 198, 0.35) !important;
+    }
+    
+    /* 7. Regla universal: absolutamente TODO el texto dentro de cualquier tarjeta, recuadro o contenedor */
+    body.dark-mode .card *,
+    body.dark-mode .tarjeta *,
+    body.dark-mode .servicio *,
+    body.dark-mode .tarjeta-contenido *,
+    body.dark-mode .tarjeta__contenido *,
+    body.dark-mode .banner-tramite *,
+    body.dark-mode .noticia__contenido-blanco *,
+    body.dark-mode .requisitos *,
+    body.dark-mode .lista-departamentos li *,
+    body.dark-mode #servicios .servicio *,
+    body.dark-mode .servicios .servicio *,
+    body.dark-mode #turismo .tarjeta *,
+    body.dark-mode .turismo .tarjeta *,
+    body.dark-mode .rejilla .tarjeta *,
+    body.dark-mode .rejilla .card *,
+    .dark-mode .card *,
+    .dark-mode .tarjeta *,
+    .dark-mode .servicio *,
+    .dark-mode .tarjeta-contenido *,
+    .dark-mode .tarjeta__contenido *,
+    .dark-mode .banner-tramite *,
+    .dark-mode .noticia__contenido-blanco *,
+    .dark-mode .requisitos *,
+    .dark-mode .lista-departamentos li *,
+    .dark-mode #servicios .servicio *,
+    .dark-mode .servicios .servicio *,
+    .dark-mode #turismo .tarjeta *,
+    .dark-mode .turismo .tarjeta *,
+    .dark-mode .rejilla .tarjeta *,
+    .dark-mode .rejilla .card *,
+    [data-theme="oscuro"] .card *,
+    [data-theme="oscuro"] .tarjeta *,
+    [data-theme="oscuro"] .servicio *,
+    [data-theme="oscuro"] .tarjeta-contenido *,
+    [data-theme="oscuro"] .tarjeta__contenido *,
+    [data-theme="oscuro"] .banner-tramite *,
+    [data-theme="oscuro"] .noticia__contenido-blanco *,
+    [data-theme="oscuro"] .requisitos *,
+    [data-theme="oscuro"] .lista-departamentos li * {
+      color: #ffffff !important;
+    }
+    
+    /* 8. Botones principales para que mantengan texto blanco legible */
+    body.dark-mode .boton,
+    body.dark-mode .boton--destacado,
+    body.dark-mode .boton--primario,
+    .dark-mode .boton,
+    .dark-mode .boton--destacado,
+    .dark-mode .boton--primario,
+    [data-theme="oscuro"] .boton,
+    [data-theme="oscuro"] .boton--destacado,
+    [data-theme="oscuro"] .boton--primario {
+      background-color: #8b5fc6 !important;
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .boton:hover,
+    body.dark-mode .boton--destacado:hover,
+    body.dark-mode .boton--primario:hover,
+    .dark-mode .boton:hover,
+    .dark-mode .boton--destacado:hover,
+    .dark-mode .boton--primario:hover,
+    [data-theme="oscuro"] .boton:hover,
+    [data-theme="oscuro"] .boton--destacado:hover,
+    [data-theme="oscuro"] .boton--primario:hover {
+      background-color: #a078d6 !important;
+      color: #ffffff !important;
+    }
+    
+    /* Pie de página en modo oscuro */
+    body.dark-mode .pie,
+    .dark-mode .pie,
+    [data-theme="oscuro"] .pie {
+      background-color: #0b1115 !important;
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .pie *,
+    .dark-mode .pie *,
+    [data-theme="oscuro"] .pie * {
+      color: #ffffff !important;
+    }
+    
+    /* ==========================================================
+       Botón alternador de tema claro / oscuro (.tema-boton)
+       ========================================================== */
+    .tema-boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--color-borde);
+      background-color: transparent;
+      color: var(--color-texto);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    
+    .tema-boton:hover {
+      background-color: rgba(118, 75, 175, 0.15);
+    }
+    
+    .tema-boton svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+    
+    .tema-boton .tema-boton__sol {
+      display: none;
+    }
+    
+    [data-theme="oscuro"] .tema-boton .tema-boton__sol,
+    body.dark-mode .tema-boton .tema-boton__sol,
+    .dark-mode .tema-boton .tema-boton__sol {
+      display: block;
+    }
+    
+    [data-theme="oscuro"] .tema-boton .tema-boton__luna,
+    body.dark-mode .tema-boton .tema-boton__luna,
+    .dark-mode .tema-boton .tema-boton__luna {
+      display: none;
+    }
+    
+    body.dark-mode .tema-boton,
+    .dark-mode .tema-boton,
+    [data-theme="oscuro"] .tema-boton {
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      color: #ffffff !important;
+    }
+    
+
+    /* ===== Reset básico ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      width: 100%;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--color-texto);
+      background-color: var(--color-fondo);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== Contenedor ===== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== Encabezado: transparente y flotante sobre la foto ===== */
+    .encabezado {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      background-color: transparent;
+      border-bottom: none;
+    }
+
+    /* ===== Barra de navegación: logo + menú con flexbox ===== */
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      min-height: 72px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #45266b;
+      font-size: 1.05rem;
+      letter-spacing: 0.2px;
+    }
+
+    .marca__logo {
+      height: 52px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .navegacion {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .navegacion a {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      color: #ffffff;
+      transition: var(--transicion);
+    }
+
+    .navegacion a:hover {
+      color: var(--color-blanco);
+      background-color: rgba(255, 255, 255, 0.15);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .navegacion .destacado {
+      background-color: #45266b;
+      color: #ffffff;
+    }
+
+    .navegacion .destacado:hover {
+      background-color: #764baf;
+      color: #ffffff;
+    }
+
+    .nav-derecha {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tema-boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background-color: transparent;
+      color: #ffffff;
+      cursor: pointer;
+      transition: var(--transicion);
+    }
+
+    .tema-boton:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .tema-boton svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    .tema-boton .tema-boton__sol {
+      display: none;
+    }
+
+    [data-theme="oscuro"] .tema-boton .tema-boton__sol {
+      display: block;
+    }
+
+    [data-theme="oscuro"] .tema-boton .tema-boton__luna {
+      display: none;
+    }
+
+    /* ===== Portada: ancho completo, fuera de cualquier contenedor ===== */
+    #inicio {
+      display: block;
+    }
+
+    .portada {
+      display: block;
+      position: relative;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+      background-color: #2f1a4a;
+      background-image: linear-gradient(rgba(69, 38, 107, 0.68), rgba(47, 26, 74, 0.68)), url("images/puertovaras.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--color-blanco);
+      padding: 72px 0 160px;
+      text-align: center;
+    }
+
+    .portada__contenido {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .portada h1 {
+      color: #ffffff;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+    }
+
+    .portada__separador {
+      width: 140px;
+      height: 2px;
+      border: none;
+      background-color: #ffffff;
+      margin: 0 auto 18px;
+    }
+
+    .portada__eslogan {
+      margin: 0 auto 20px;
+      color: #ffffff;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    }
+
+    .portada__descripcion {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      color: #eaf3f7;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    }
+
+    .portada__acciones {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transicion);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .boton--primario {
+      background-color: #45266b;
+      color: #ffffff;
+    }
+
+    .boton--primario:hover {
+      background-color: #764baf;
+      transform: translateY(-2px);
+    }
+
+    .boton--contorno {
+      background-color: transparent;
+      border-color: rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+    }
+
+    .boton--contorno:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* ===== Secciones ===== */
+    .seccion {
+      padding: 64px 0;
+    }
+
+    .seccion--alterna {
+      background-color: var(--color-blanco);
+    }
+
+    .seccion__titulo {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      color: #45266b;
+      margin-bottom: 8px;
+    }
+
+    .seccion__subtitulo {
+      color: var(--color-texto-suave);
+      margin-bottom: 36px;
+      max-width: 620px;
+    }
+
+    /* ===== Lista de departamentos ===== */
+    .lista-departamentos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .lista-departamentos li {
+      position: relative;
+      background-color: var(--color-fondo);
+      border: 1px solid var(--color-borde);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.92rem;
+      color: var(--color-texto);
+      border-left: 4px solid #764baf;
+      transition: var(--transicion);
+      cursor: pointer;
+    }
+
+    .lista-departamentos li:hover {
+      border-left-color: #45266b;
+      transform: translateX(4px);
+    }
+
+    .lista-departamentos a {
+      display: block;
+      color: inherit;
+    }
+
+    .lista-departamentos a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+    }
+
+    .lista-departamentos a:hover {
+      color: #45266b;
+    }
+
+    /* ===== Servicios principales ===== */
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .servicio {
+      position: relative;
+      background-color: var(--color-blanco);
+      border: 1px solid var(--color-borde);
+      border-radius: var(--radio);
+      padding: 26px 24px;
+      box-shadow: 0 2px 8px rgba(69, 38, 107, 0.08);
+      transition: var(--transicion);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .servicio:hover {
+      transform: translateY(-4px);
+      border-color: #764baf;
+      box-shadow: 0 8px 20px rgba(69, 38, 107, 0.18);
+    }
+
+    .servicio__icono {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background-color: rgba(118, 75, 175, 0.16);
+      color: #764baf;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .servicio h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #45266b;
+    }
+
+    .servicio p {
+      font-size: 0.9rem;
+      color: #45266b;
+    }
+
+    .servicio__enlace {
+      margin-top: auto;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #764baf;
+    }
+
+    .servicio__enlace:hover {
+      color: #45266b;
+    }
+
+    .servicio__enlace::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radio);
+    }
+
+    .servicio__enlace:hover {
+      color: #764baf;
+    }
+
+    /* ===== Noticias ===== */
+    .noticias {
+      padding: 64px 0;
+    }
+
+    .noticias__titulo {
+      text-align: center;
+      color: #45266b;
+      margin-bottom: 36px;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+    }
+
+    .noticias__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .noticia {
+      position: relative;
+      height: 350px;
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(69, 38, 107, 0.18);
+    }
+
+    .noticia img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .noticia:hover img {
+      transform: scale(1.1);
+    }
+
+    .noticia__overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 16px 16px;
+      z-index: 10;
+    }
+
+    .noticia__etiqueta {
+      display: inline-block;
+      background-color: #764baf;
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .noticia__contenido-blanco {
+      width: 90%;
+      margin: 0 auto 15px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 12px 15px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .noticia__titulo {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #45266b;
+      margin: 0;
+    }
+
+    /* ===== Pie de página ===== */
+    .pie {
+      background-color: var(--color-primario-oscuro);
+      color: #cddfe9;
+      padding: 48px 0 24px;
+      font-size: 0.9rem;
+    }
+
+    .pie__rejilla {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .pie h4 {
+      color: var(--color-blanco);
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .pie li {
+      margin-bottom: 6px;
+    }
+
+    .pie a:hover {
+      color: var(--color-blanco);
+    }
+
+    .pie__legal {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #9fbccb;
+    }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 1024px) {
+      .servicios {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 10px 0;
+        min-height: auto;
+      }
+
+      .nav-derecha {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .navegacion {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 6px;
+      }
+
+      .navegacion a {
+        width: 100%;
+        text-align: center;
+        display: block;
+      }
+
+      .marca__logo {
+        height: 46px;
+      }
+
+      .portada {
+        padding: 110px 0 110px;
+      }
+
+      .portada h1 {
+        font-size: 28px !important;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .portada__separador {
+        width: 90px;
+      }
+
+      .portada__eslogan {
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+      }
+
+      .portada__descripcion {
+        font-size: 0.95rem;
+        padding: 0 10px;
+      }
+
+      .portada__acciones {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .portada__acciones .boton {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .servicios {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+      }
+
+      .lista-departamentos {
+        grid-template-columns: 1fr;
+      }
+
+      .pie__rejilla {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-container {
+        justify-content: center;
+        padding: 12px 0;
+      }
+      .navegacion {
+        justify-content: center;
+      }
+      .portada {
+        padding: 56px 0 120px;
+      }
+      .servicios {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Fotografía continua en toda la portada, incluido el encabezado. */
+    .cabecera-portada {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(rgba(69, 38, 107, .62), rgba(47, 26, 74, .68)), url("images/puertovaras.jpg") center / cover no-repeat;
+    }
+    body.pagina-inicio .cabecera-portada > .encabezado {
+      position: relative;
+      background: transparent !important;
+      border: 0;
+    }
+    .cabecera-portada .portada {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      padding: clamp(48px, 8vh, 96px) 0;
+    }
+    .pagina-inicio .tema-boton { color: #fff; border-color: rgba(255,255,255,.6); }
+    .lista-departamentos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .lista-departamentos h3 { font-size: 1rem; line-height: 1.45; margin: 0 0 10px; }
+    .lista-departamentos p { font-size: .88rem; line-height: 1.6; color: var(--color-texto-suave); margin: 0; }
+    .lista-departamentos li:focus-within { outline: 3px solid var(--color-acento); outline-offset: 3px; }
+    @media (max-width: 1024px) { .lista-departamentos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 768px) {
+      .cabecera-portada .nav-container { padding: 16px 20px; }
+      .cabecera-portada .nav-derecha { flex-direction: row; justify-content: center; }
+      .cabecera-portada .navegacion { flex-direction: row; justify-content: center; width: auto; }
+      .cabecera-portada .navegacion a { width: auto; padding: 8px; }
+      .cabecera-portada .tema-boton { flex-shrink: 0; }
+    }
+    @media (max-width: 600px) { .lista-departamentos { grid-template-columns: 1fr; } }
+  </style>
+  <script>
+    (function () {
+      try {
+        var temaGuardado = localStorage.getItem("theme") || localStorage.getItem("tema");
+        if (temaGuardado === "dark" || temaGuardado === "oscuro") {
+          document.documentElement.setAttribute("data-theme", "oscuro");
+        } else if (temaGuardado === "light" || temaGuardado === "claro") {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/alpinejs/alpine.min.js"></script>
+</head>
+<body class="pagina-inicio" x-data="{ open: false }" :class="{ 'overflow-hidden': open }" x-effect="if (open) $nextTick(() => $refs.menuCerrar.focus())" @keydown.escape.window="if (open) { open = false; $nextTick(() => $refs.menuBoton.focus()) }">
+  <div class="cabecera-portada">
+  <!-- ===== Encabezado y navegación ===== -->
+  <header class="encabezado encabezado-adaptable" @resize.window="if (window.innerWidth >= 768 && open) { open = false; $nextTick(() => $refs.navegacionEscritorio.querySelector('a, button').focus()) }">
+    <div class="container encabezado__barra">
+      <a class="marca" href="index.html" aria-label="Municipalidad de Puerto Varas: inicio"><img class="marca__logo" src="images/logo.png" alt="Municipalidad de Puerto Varas"></a>
+      <nav class="navegacion menu-escritorio hidden md:flex" aria-label="Navegación principal" x-ref="navegacionEscritorio">
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'tramites-escritorio') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'tramites-escritorio' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'tramites-escritorio' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="tramites-escritorio">Trámites<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="tramites-escritorio" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="guia-tramites.html">Todos los trámites online</a>
+            <a href="tramites-presenciales.html">Trámites presenciales</a>
+            <a href="permiso-circulacion.html">Permiso de Circulación</a>
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="oirs.html">OIRS</a>
+            <a href="pago-derechos-varios.html">Pago de Derechos Varios</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="licencias-conducir.html">Licencias de Conducir</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'departamentos-escritorio') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'departamentos-escritorio' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'departamentos-escritorio' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="departamentos-escritorio">Departamentos<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="departamentos-escritorio" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="alcaldia.html">Alcaldía</a>
+            <a href="administracion-municipal.html">Administración Municipal</a>
+            <a href="direccion-administracion-finanzas.html">Dirección de Administración y Finanzas</a>
+            <a href="direccion-desarrollo-comunitario.html">Dirección Desarrollo Comunitario (DIDECO)</a>
+            <a href="direccion-obras-municipales.html">Dirección de Obras Municipales</a>
+            <a href="direccion-transito-transporte.html">Dirección de Tránsito y Transporte Público</a>
+            <a href="direccion-control.html">Dirección de Control</a>
+            <a href="secpla.html">Secretaría Comunal de Planificación (SECPLA)</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="direccion-salud-municipal.html">Dirección de Salud Municipal</a>
+            <a href="secretaria-municipal.html">Secretaría Municipal</a>
+            <a href="direccion-turismo.html">Dirección de Turismo</a>
+            <a href="direccion-medio-ambiente.html">Dirección de Medio Ambiente</a>
+            <a href="direccion-seguridad-publica.html">Dirección de Seguridad Pública y Emergencia</a>
+            <a href="cementerio-municipal.html">Departamento de Administración Cementerio Municipal</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'servicios-escritorio') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'servicios-escritorio' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'servicios-escritorio' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="servicios-escritorio">Servicios<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="servicios-escritorio" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="tramites-presenciales.html">Guía de Trámites Presenciales</a>
+            <a href="guia-tramites.html">Trámites Online</a>
+            <a href="direccion-turismo.html">Turismo</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+          </div>
+        </div>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="encabezado__controles">
+        <button class="tema-boton" id="tema-boton" type="button" aria-label="Alternar modo claro u oscuro">
+          <svg class="tema-boton__luna" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="tema-boton__sol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="menu-boton block md:hidden" type="button" x-ref="menuBoton" @click="open = true" aria-controls="menu-movil" aria-expanded="false" :aria-expanded="open.toString()" aria-label="Abrir menú de navegación"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+    <div class="menu-movil-dialogo md:hidden" id="menu-movil" role="dialog" aria-modal="true" aria-labelledby="titulo-menu-movil" x-ref="menuDialogo" x-cloak x-show="open" x-transition.opacity.duration.150ms @click.self="open = false; $refs.menuBoton.focus()" @keydown.tab="mantenerFocoMenu($event)">
+      <div class="menu-movil-panel">
+        <div class="menu-movil__cabecera"><h2 id="titulo-menu-movil">Menú de navegación</h2><button class="menu-cerrar" type="button" x-ref="menuCerrar" @click="open = false; $refs.menuBoton.focus()" aria-label="Cerrar menú de navegación"><span aria-hidden="true">&#10005;</span></button></div>
+        <nav class="menu-movil__enlaces" aria-label="Navegación móvil" @click="if ($event.target.closest('a')) { open = false; $nextTick(() => enfocarDestinoNavegacion($event)) }">
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'tramites-movil') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'tramites-movil' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'tramites-movil' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="tramites-movil">Trámites<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="tramites-movil" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="guia-tramites.html">Todos los trámites online</a>
+            <a href="tramites-presenciales.html">Trámites presenciales</a>
+            <a href="permiso-circulacion.html">Permiso de Circulación</a>
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="oirs.html">OIRS</a>
+            <a href="pago-derechos-varios.html">Pago de Derechos Varios</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="licencias-conducir.html">Licencias de Conducir</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'departamentos-movil') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'departamentos-movil' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'departamentos-movil' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="departamentos-movil">Departamentos<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="departamentos-movil" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="alcaldia.html">Alcaldía</a>
+            <a href="administracion-municipal.html">Administración Municipal</a>
+            <a href="direccion-administracion-finanzas.html">Dirección de Administración y Finanzas</a>
+            <a href="direccion-desarrollo-comunitario.html">Dirección Desarrollo Comunitario (DIDECO)</a>
+            <a href="direccion-obras-municipales.html">Dirección de Obras Municipales</a>
+            <a href="direccion-transito-transporte.html">Dirección de Tránsito y Transporte Público</a>
+            <a href="direccion-control.html">Dirección de Control</a>
+            <a href="secpla.html">Secretaría Comunal de Planificación (SECPLA)</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="direccion-salud-municipal.html">Dirección de Salud Municipal</a>
+            <a href="secretaria-municipal.html">Secretaría Municipal</a>
+            <a href="direccion-turismo.html">Dirección de Turismo</a>
+            <a href="direccion-medio-ambiente.html">Dirección de Medio Ambiente</a>
+            <a href="direccion-seguridad-publica.html">Dirección de Seguridad Pública y Emergencia</a>
+            <a href="cementerio-municipal.html">Departamento de Administración Cementerio Municipal</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'servicios-movil') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'servicios-movil' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'servicios-movil' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="servicios-movil">Servicios<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="servicios-movil" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="tramites-presenciales.html">Guía de Trámites Presenciales</a>
+            <a href="guia-tramites.html">Trámites Online</a>
+            <a href="direccion-turismo.html">Turismo</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+          </div>
+        </div>
+        <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Portada ===== -->
+  <section class="portada" id="inicio">
+    <div class="portada__contenido">
+      <h1>Municipalidad de Puerto Varas</h1>
+      <hr class="portada__separador">
+      <p class="portada__eslogan">Puerto Varas Somos Todos</p>
+      <p class="portada__descripcion">Bienvenido al portal digital de nuestra comuna. Accede de forma rápida y segura a los principales trámites en línea, información de departamentos y servicios municipales pensados para nuestra comuna.</p>
+      <div class="portada__acciones">
+        <a class="boton boton--primario" href="#servicios">Ver servicios</a>
+        <a class="boton boton--contorno" href="#departamentos">Conocer direcciones</a>
+      </div>
+    </div>
+  </section>
+
+  </div>
+
+  <!-- ===== Departamentos ===== -->
+  <section class="seccion seccion--alterna" id="departamentos">
+    <div class="container">
+      <h2 class="seccion__titulo">Direcciones y departamentos</h2>
+      <p class="seccion__subtitulo">Áreas que conforman la gestión municipal de Puerto Varas. Selecciona un departamento para conocer sus funciones y ubicación de referencia.</p>
+      <ul class="lista-departamentos grid-tarjetas">
+        <li><a class="departamento__enlace" href="alcaldia.html"><h3>Alcaldía</h3><p>Dirige la gestión municipal y representa a la comuna.</p></a></li>
+        <li><a class="departamento__enlace" href="administracion-municipal.html"><h3>Administración Municipal</h3><p>Coordina las unidades municipales y el seguimiento de la gestión.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-administracion-finanzas.html"><h3>Dirección de Administración y Finanzas</h3><p>Gestiona el presupuesto, las finanzas y los recursos humanos municipales.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-desarrollo-comunitario.html"><h3>Dirección Desarrollo Comunitario (DIDECO)</h3><p>Promueve el bienestar social y la participación de las organizaciones comunitarias.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-obras-municipales.html"><h3>Dirección de Obras Municipales</h3><p>Supervisa las edificaciones y el desarrollo urbano de la comuna.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-transito-transporte.html"><h3>Dirección de Tránsito y Transporte Público</h3><p>Orienta sobre tránsito, transporte y uso de las vías públicas.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-control.html"><h3>Dirección de Control</h3><p>Revisa la gestión interna y el cumplimiento de las disposiciones municipales.</p></a></li>
+        <li><a class="departamento__enlace" href="secpla.html"><h3>Secretaría Comunal de Planificación (SECPLA)</h3><p>Asesora en planificación, estudios y proyectos para el desarrollo comunal.</p></a></li>
+        <li><a class="departamento__enlace" href="juzgado-policia-local.html"><h3>Juzgado de Policía Local</h3><p>Atiende las materias e infracciones de competencia del Juzgado.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-salud-municipal.html"><h3>Dirección de Salud Municipal</h3><p>Coordina la atención de salud municipal y la salud pública comunal.</p></a></li>
+        <li><a class="departamento__enlace" href="secretaria-municipal.html"><h3>Secretaría Municipal</h3><p>Apoya a Alcaldía y Concejo y certifica las actuaciones municipales.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-turismo.html"><h3>Dirección de Turismo</h3><p>Apoya el desarrollo turístico de Puerto Varas.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-medio-ambiente.html"><h3>Dirección de Medio Ambiente</h3><p>Gestiona el aseo, la recolección de residuos y las áreas verdes.</p></a></li>
+        <li><a class="departamento__enlace" href="direccion-seguridad-publica.html"><h3>Dirección de Seguridad Pública y Emergencia</h3><p>Promueve la prevención vecinal y la respuesta a emergencias comunales.</p></a></li>
+        <li><a class="departamento__enlace" href="cementerio-municipal.html"><h3>Departamento de Administración Cementerio Municipal</h3><p>Administra los cementerios municipales y orienta sobre sus servicios.</p></a></li>
+      </ul>
+      
+    </div>
+  </section>
+
+  <!-- ===== Servicios principales ===== -->
+  <section class="seccion" id="servicios">
+    <div class="container">
+      <h2 class="seccion__titulo">Servicios principales</h2>
+      <p class="seccion__subtitulo">Accesos rápidos a los servicios más solicitados por la comunidad.</p>
+      <div class="servicios">
+        <article class="servicio tarjeta card">
+          <img class="servicio__imagen imagen-tarjeta" src="images/servicios/guia-presencial.svg" alt="Guía de documentos y requisitos para atención presencial" width="640" height="360" loading="lazy" decoding="async">
+          <h3>Guía de Trámites Presenciales</h3>
+          <p>Revisa aquí cómo realizar y qué requisitos debes cumplir para la gestión de tus trámites en la municipalidad.</p>
+          <a class="servicio__enlace" href="tramites-presenciales.html">Ingresar</a>
+        </article>
+        <article class="servicio tarjeta card">
+          <img class="servicio__imagen imagen-tarjeta" src="images/servicios/tramites-online.svg" alt="Computador para realizar trámites municipales en línea" width="640" height="360" loading="lazy" decoding="async">
+          <h3>Trámites Online</h3>
+          <p>Revisa aquí tus trámites de la municipalidad.</p>
+          <a class="servicio__enlace" href="guia-tramites.html">Ingresar</a>
+        </article>
+        <article class="servicio tarjeta card">
+          <svg class="servicio__imagen imagen-tarjeta" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="turismo-ilustracion-titulo">
+            <title id="turismo-ilustracion-titulo">Montañas y sol, símbolo de turismo</title>
+            <defs>
+              <linearGradient id="turismo-fondo" x2="1" y2="1">
+                <stop stop-color="#f2edf8"/>
+                <stop offset="1" stop-color="#dcecf0"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="360" fill="url(#turismo-fondo)"/>
+            <circle cx="555" cy="55" r="105" fill="#764baf" opacity=".08"/>
+            <circle cx="55" cy="335" r="130" fill="#764baf" opacity=".1"/>
+            <g fill="none" stroke="#45266b" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+              <circle cx="445" cy="105" r="35" fill="#e5ddf4"/>
+              <path d="M445 45v-12m0 144v-12m60-60h12m-144 0h12m102-42 9-9m-102 102 9-9m84 0 9 9m-102-102 9 9"/>
+              <path d="m310 290 100-140 105 140Z" fill="#e5ddf4"/>
+              <path d="m125 290 165-200 165 200Z" fill="white"/>
+              <path d="m235 157 30 20 25-30 25 30 30-20M115 290h410"/>
+            </g>
+          </svg>
+          <h3>Turismo</h3>
+          <p>Explora los principales atractivos, panoramas y servicios turísticos de nuestra comuna en un solo lugar.</p>
+          <a class="servicio__enlace" href="direccion-turismo.html">Ingresar</a>
+        </article>
+        <article class="servicio tarjeta card">
+          <img class="servicio__imagen imagen-tarjeta" src="images/servicios/patentes-alcoholes.svg" alt="Local comercial y patente municipal" width="640" height="360" loading="lazy" decoding="async">
+          <h3>Patentes Comerciales</h3>
+          <p>Revisa aquí los trámites que tenemos a tu disposición.</p>
+          <a class="servicio__enlace" href="patentes-comerciales.html">Ingresar</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Noticias ===== -->
+  <section class="noticias">
+    <div class="container">
+      <h2 class="noticias__titulo">Noticias Recientes</h2>
+      <div class="noticias__grid">
+        <article class="noticia"><a class="noticia__enlace" href="noticia-biblioteca-infantil.html">
+          <img src="images/noticias/bibloteca-infantil.png" alt="Biblioteca Infantil de Puerto Varas">
+          <div class="noticia__overlay">
+            <span class="noticia__etiqueta">Noticias</span>
+            <div class="noticia__contenido-blanco">
+              <h3 class="noticia__titulo">BIBLIOTECA INFANTIL DE PUERTO VARAS CUMPLE SEIS MESES CON MÁS DE 8 MIL VISITAS DE FAMILIAS LECTORAS</h3>
+            </div>
+          </div>
+        </a></article>
+        <article class="noticia"><a class="noticia__enlace" href="noticia-postes-inteligentes.html">
+          <img src="images/noticias/postes-inteligentes.png" alt="Postes inteligentes" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
+          <div class="noticia__overlay">
+            <span class="noticia__etiqueta">Noticias</span>
+            <div class="noticia__contenido-blanco">
+              <h3 class="noticia__titulo">PUERTO VARAS PONE EN FUNCIONAMIENTO CUATRO POSTES INTELIGENTES PARA REFORZAR SEGURIDAD</h3>
+            </div>
+          </div>
+        </a></article>
+        <article class="noticia"><a class="noticia__enlace" href="noticia-telesalud-rural.html">
+          <img src="images/noticias/telesalud-rural.png" alt="Telesalud rural" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
+          <div class="noticia__overlay">
+            <span class="noticia__etiqueta">Noticias</span>
+            <div class="noticia__contenido-blanco">
+              <h3 class="noticia__titulo">PUERTO VARAS SE CONVIERTE EN LA PRIMERA COMUNA DE CHILE EN IMPLEMENTAR TELESALUD RURAL</h3>
+            </div>
+          </div>
+        </a></article>
+        <article class="noticia"><a class="noticia__enlace" href="noticia-farmacia-comunitaria.html">
+          <img src="images/noticias/farmacia-comunitaria.png" alt="Farmacia comunitaria Puerto Varas" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
+          <div class="noticia__overlay">
+            <span class="noticia__etiqueta">Noticias</span>
+            <div class="noticia__contenido-blanco">
+              <h3 class="noticia__titulo">FARMACIA COMUNITARIA DE PUERTO VARAS PERMITE AHORRAR AL MENOS UN 30% EN MEDICAMENTOS DE ALTO COSTO</h3>
+            </div>
+          </div>
+        </a></article>
+        <article class="noticia"><a class="noticia__enlace" href="noticia-bypass-puerto-varas.html">
+          <img src="images/noticias/alcalde-garate.png" alt="Alcalde Gárate" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
+          <div class="noticia__overlay">
+            <span class="noticia__etiqueta">Noticias</span>
+            <div class="noticia__contenido-blanco">
+              <h3 class="noticia__titulo">ALCALDE GÁRATE PROPONE AL MOP INCLUIR EL FUTURO BYPASS DE PUERTO VARAS EN LA CONCESIÓN DE LA RUTA 5</h3>
+            </div>
+          </div>
+        </a></article>
+        <article class="noticia"><a class="noticia__enlace" href="noticia-proyecto-los-copihues.html">
+          <img src="images/noticias/proyecto-casas.png" alt="Proyecto habitacional Los Copihues" style="position: absolute; width: 100%; height: 100%; object-fit: cover;">
+          <div class="noticia__overlay">
+            <span class="noticia__etiqueta">Noticias</span>
+            <div class="noticia__contenido-blanco">
+              <h3 class="noticia__titulo">PROYECTO HABITACIONAL LOS COPIHUES AVANZA CON FIRMA DE CONVENIO PARA DESARROLLAR 64 VIVIENDAS</h3>
+            </div>
+          </div>
+        </a></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pie de página ===== -->
+  <footer class="pie" id="contacto">
+    <div class="container">
+      <div class="pie__rejilla">
+        <div>
+          <h4>Municipalidad de Puerto Varas</h4>
+          <p>San Francisco Nº 413, Puerto Varas.</p>
+          <p>Teléfono: +56 65 2361100</p>
+          <p>Horario: Lunes a Viernes 08:30 - 14:00 hrs.</p>
+        </div>
+        <div>
+          <h4>Trámites</h4>
+          <ul>
+            <li><a href="permiso-circulacion.html">Permiso de Circulación</a></li>
+            <li><a href="aseo-domiciliario.html">Aseo Domiciliario</a></li>
+            <li><a href="patentes-comerciales.html">Patentes Comerciales</a></li>
+            <li><a href="dom-digital.html">DOM Digital</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Municipalidad</h4>
+          <ul>
+            <li><a href="#departamentos">Departamentos</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#servicios">Transparencia</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie__legal">
+        <nav class="pie__redes" aria-label="Redes sociales oficiales">
+          <a href="https://web.facebook.com/puertovarasinforma/?locale=es_LA&amp;_rdc=1&amp;_rdr" target="_blank" rel="noopener noreferrer" aria-label="Facebook de la Municipalidad (abre en una pestaña nueva)">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/municipiopuertovaras/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram de la Municipalidad (abre en una pestaña nueva)">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.tiktok.com/@munipuertovaras" target="_blank" rel="noopener noreferrer" aria-label="TikTok de la Municipalidad (abre en una pestaña nueva)">
+            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+          </a>
+        </nav>
+        <p>&copy; 2026 Municipalidad de Puerto Varas. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Reestructura la página: mueve la sección de servicios principales
+       (las 4 tarjetas) a la zona de contenido, justo debajo de la portada
+       y antes de la sección "Direcciones y departamentos". */
+/* ===== JS corregido ===== */
+    document.addEventListener("DOMContentLoaded", function () {
+      var seccionDepartamentos = document.getElementById("departamentos");
+      var seccionServicios = document.getElementById("servicios");
+
+      if (seccionDepartamentos && seccionServicios) {
+        seccionDepartamentos.parentNode.insertBefore(seccionServicios, seccionDepartamentos);
+      }
+
+
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "municipalidad-de-puerto-varas",
+  "version": "1.0.0",
+  "description": "Sitio web de la Municipalidad de Puerto Varas",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo \"Abrir index.html en el navegador\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "municipalidad",
+    "puerto-varas"
+  ],
+  "author": "",
+  "license": "ISC"
+}

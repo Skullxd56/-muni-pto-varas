@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apoya e implementa medidas de prevención en seguridad vecinal y emergencias.">
+  <title>Dirección de Seguridad Pública y Emergencia - Municipalidad de Puerto Varas</title>
+  <style>
+    :root {
+      --color-primario: #45266b;
+      --color-primario-oscuro: #2f1a4a;
+      --color-acento: #9333ea;
+      --color-texto: #1c2b33;
+      --color-texto-suave: #5a6b74;
+      --color-fondo: #f5f8fa;
+      --color-blanco: #ffffff;
+      --color-borde: #e2e9ee;
+      --radio: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--color-texto);
+      background-color: var(--color-fondo);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .encabezado {
+      background-color: var(--color-blanco);
+      border-bottom: 1px solid var(--color-borde);
+    }
+    .encabezado__contenido {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 72px;
+    }
+    .marca__logo { height: 52px; width: auto; }
+    .navegacion a {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      color: var(--color-texto-suave);
+      transition: all 0.25s ease;
+    }
+    .navegacion a:hover { color: var(--color-primario); background-color: var(--color-fondo); }
+    .seccion { padding: 64px 0; }
+    .seccion h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--color-primario); margin-bottom: 16px; }
+    .seccion p { color: var(--color-texto-suave); max-width: 720px; margin-bottom: 16px; }
+    .tarjeta-contenido {
+      background-color: var(--color-blanco);
+      border: 1px solid var(--color-borde);
+      border-radius: var(--radio);
+      padding: 28px;
+      box-shadow: 0 2px 8px rgba(69, 38, 107, 0.06);
+      max-width: 820px;
+    }
+    .boton {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background-color: var(--color-acento);
+      color: var(--color-blanco);
+      transition: all 0.25s ease;
+    }
+    .boton:hover { background-color: #7e22ce; }
+    .pie {
+      background-color: var(--color-primario-oscuro);
+      color: #cddfe9;
+      padding: 24px 0;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  
+    /* ===== Modo oscuro ===== */
+    /* ==========================================================
+       Municipalidad de Puerto Varas - Estilos Modo Oscuro
+       Corrección integral de contraste para modo oscuro (.dark-mode)
+       ========================================================== */
+    
+    /* Variables para modo oscuro */
+    [data-theme="oscuro"],
+    body.dark-mode,
+    .dark-mode {
+      --color-primario: #8b5fc6;
+      --color-primario-oscuro: #2f1a4a;
+      --color-acento: #a078d6;
+      --color-texto: #ffffff;
+      --color-texto-suave: #e6edf3;
+      --color-fondo: #10181d;
+      --color-blanco: #1a2227;
+      --color-borde: #2d3a42;
+      --sombra: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Fondo general de la página y texto base */
+    body.dark-mode,
+    .dark-mode,
+    [data-theme="oscuro"] body {
+      background-color: #10181d !important;
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .encabezado,
+    .dark-mode .encabezado {
+      background-color: #10181d !important;
+      border-bottom-color: #2d3a42 !important;
+    }
+    
+    body.dark-mode .navegacion a,
+    .dark-mode .navegacion a {
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .seccion h1,
+    body.dark-mode .seccion h2,
+    body.dark-mode .seccion h3,
+    body.dark-mode .seccion p,
+    body.dark-mode .seccion__titulo,
+    body.dark-mode .seccion__subtitulo,
+    body.dark-mode .noticias__titulo,
+    body.dark-mode .marca,
+    .dark-mode .seccion h1,
+    .dark-mode .seccion h2,
+    .dark-mode .seccion h3,
+    .dark-mode .seccion p,
+    .dark-mode .seccion__titulo,
+    .dark-mode .seccion__subtitulo,
+    .dark-mode .noticias__titulo,
+    .dark-mode .marca {
+      color: #ffffff !important;
+    }
+    
+    /* ==========================================================
+       FONDOS OSCUROS PARA CUALQUIER TIPO DE TARJETA, RECUADRO O CONTENEDOR
+       ========================================================== */
+    body.dark-mode .card,
+    body.dark-mode .tarjeta,
+    body.dark-mode .servicio,
+    body.dark-mode .tarjeta-contenido,
+    body.dark-mode .tarjeta__contenido,
+    body.dark-mode .banner-tramite,
+    body.dark-mode .lista-departamentos li,
+    body.dark-mode .noticia__contenido-blanco,
+    body.dark-mode .seccion--alterna,
+    body.dark-mode #servicios .servicio,
+    body.dark-mode .servicios .servicio,
+    body.dark-mode #servicios .card,
+    body.dark-mode .servicios .card,
+    body.dark-mode #servicios .tarjeta,
+    body.dark-mode .servicios .tarjeta,
+    body.dark-mode #turismo .tarjeta,
+    body.dark-mode .turismo .tarjeta,
+    body.dark-mode #turismo .card,
+    body.dark-mode .turismo .card,
+    body.dark-mode .rejilla .tarjeta,
+    body.dark-mode .rejilla .card,
+    .dark-mode .card,
+    .dark-mode .tarjeta,
+    .dark-mode .servicio,
+    .dark-mode .tarjeta-contenido,
+    .dark-mode .tarjeta__contenido,
+    .dark-mode .banner-tramite,
+    .dark-mode .lista-departamentos li,
+    .dark-mode .noticia__contenido-blanco,
+    .dark-mode .seccion--alterna,
+    .dark-mode #servicios .servicio,
+    .dark-mode .servicios .servicio,
+    .dark-mode #servicios .card,
+    .dark-mode .servicios .card,
+    .dark-mode #servicios .tarjeta,
+    .dark-mode .servicios .tarjeta,
+    .dark-mode #turismo .tarjeta,
+    .dark-mode .turismo .tarjeta,
+    .dark-mode #turismo .card,
+    .dark-mode .turismo .card,
+    .dark-mode .rejilla .tarjeta,
+    .dark-mode .rejilla .card,
+    [data-theme="oscuro"] .card,
+    [data-theme="oscuro"] .tarjeta,
+    [data-theme="oscuro"] .servicio,
+    [data-theme="oscuro"] .tarjeta-contenido,
+    [data-theme="oscuro"] .tarjeta__contenido,
+    [data-theme="oscuro"] .banner-tramite,
+    [data-theme="oscuro"] .lista-departamentos li,
+    [data-theme="oscuro"] .noticia__contenido-blanco {
+      background-color: #1a2227 !important;
+      background-image: none !important;
+      border-color: #2d3a42 !important;
+    }
+    
+    body.dark-mode .lista-departamentos li,
+    .dark-mode .lista-departamentos li,
+    [data-theme="oscuro"] .lista-departamentos li {
+      border-left-color: #8b5fc6 !important;
+    }
+    
+    body.dark-mode .lista-departamentos li:hover,
+    .dark-mode .lista-departamentos li:hover {
+      background-color: #232d34 !important;
+      border-left-color: #a078d6 !important;
+    }
+    
+    /* ==========================================================
+       TEXTO EN BLANCO (#ffffff !important) DENTRO DE CUALQUIER TARJETA,
+       RECUADRO O CONTENEDOR (h1, h2, h3, p, li, a, span)
+       ========================================================== */
+    
+    /* 1. Títulos (h1, h2, h3, h4) */
+    body.dark-mode .card h1, body.dark-mode .card h2, body.dark-mode .card h3, body.dark-mode .card h4,
+    body.dark-mode .tarjeta h1, body.dark-mode .tarjeta h2, body.dark-mode .tarjeta h3, body.dark-mode .tarjeta h4,
+    body.dark-mode .servicio h1, body.dark-mode .servicio h2, body.dark-mode .servicio h3, body.dark-mode .servicio h4,
+    body.dark-mode .tarjeta-contenido h1, body.dark-mode .tarjeta-contenido h2, body.dark-mode .tarjeta-contenido h3, body.dark-mode .tarjeta-contenido h4,
+    body.dark-mode .banner-tramite h1, body.dark-mode .banner-tramite h2, body.dark-mode .banner-tramite h3, body.dark-mode .banner-tramite h4,
+    body.dark-mode .noticia__contenido-blanco h1, body.dark-mode .noticia__contenido-blanco h2, body.dark-mode .noticia__contenido-blanco h3, body.dark-mode .noticia__contenido-blanco h4,
+    body.dark-mode .noticia__titulo,
+    body.dark-mode .lista-departamentos h1, body.dark-mode .lista-departamentos h2, body.dark-mode .lista-departamentos h3,
+    body.dark-mode #servicios h1, body.dark-mode #servicios h2, body.dark-mode #servicios h3,
+    body.dark-mode .servicios h1, body.dark-mode .servicios h2, body.dark-mode .servicios h3,
+    body.dark-mode #turismo h1, body.dark-mode #turismo h2, body.dark-mode #turismo h3,
+    body.dark-mode .turismo h1, body.dark-mode .turismo h2, body.dark-mode .turismo h3,
+    body.dark-mode #departamentos h1, body.dark-mode #departamentos h2, body.dark-mode #departamentos h3,
+    .dark-mode .card h1, .dark-mode .card h2, .dark-mode .card h3, .dark-mode .card h4,
+    .dark-mode .tarjeta h1, .dark-mode .tarjeta h2, .dark-mode .tarjeta h3, .dark-mode .tarjeta h4,
+    .dark-mode .servicio h1, .dark-mode .servicio h2, .dark-mode .servicio h3, .dark-mode .servicio h4,
+    .dark-mode .tarjeta-contenido h1, .dark-mode .tarjeta-contenido h2, .dark-mode .tarjeta-contenido h3, .dark-mode .tarjeta-contenido h4,
+    .dark-mode .banner-tramite h1, .dark-mode .banner-tramite h2, .dark-mode .banner-tramite h3, .dark-mode .banner-tramite h4,
+    .dark-mode .noticia__contenido-blanco h1, .dark-mode .noticia__contenido-blanco h2, .dark-mode .noticia__contenido-blanco h3, .dark-mode .noticia__contenido-blanco h4,
+    .dark-mode .noticia__titulo,
+    .dark-mode .lista-departamentos h1, .dark-mode .lista-departamentos h2, .dark-mode .lista-departamentos h3,
+    .dark-mode #servicios h1, .dark-mode #servicios h2, .dark-mode #servicios h3,
+    .dark-mode .servicios h1, .dark-mode .servicios h2, .dark-mode .servicios h3,
+    .dark-mode #turismo h1, .dark-mode #turismo h2, .dark-mode #turismo h3,
+    .dark-mode .turismo h1, .dark-mode .turismo h2, .dark-mode .turismo h3,
+    .dark-mode #departamentos h1, .dark-mode #departamentos h2, .dark-mode #departamentos h3,
+    [data-theme="oscuro"] .card h1, [data-theme="oscuro"] .card h2, [data-theme="oscuro"] .card h3,
+    [data-theme="oscuro"] .tarjeta h1, [data-theme="oscuro"] .tarjeta h2, [data-theme="oscuro"] .tarjeta h3,
+    [data-theme="oscuro"] .servicio h1, [data-theme="oscuro"] .servicio h2, [data-theme="oscuro"] .servicio h3,
+    [data-theme="oscuro"] .tarjeta-contenido h1, [data-theme="oscuro"] .tarjeta-contenido h2, [data-theme="oscuro"] .tarjeta-contenido h3,
+    [data-theme="oscuro"] .banner-tramite h1, [data-theme="oscuro"] .banner-tramite h2, [data-theme="oscuro"] .banner-tramite h3,
+    [data-theme="oscuro"] .noticia__contenido-blanco h1, [data-theme="oscuro"] .noticia__contenido-blanco h2, [data-theme="oscuro"] .noticia__contenido-blanco h3,
+    [data-theme="oscuro"] .noticia__titulo {
+      color: #ffffff !important;
+    }
+    
+    /* 2. Párrafos (p) */
+    body.dark-mode .card p,
+    body.dark-mode .tarjeta p,
+    body.dark-mode .servicio p,
+    body.dark-mode .tarjeta-contenido p,
+    body.dark-mode .banner-tramite p,
+    body.dark-mode .noticia__contenido-blanco p,
+    body.dark-mode .lista-departamentos p,
+    body.dark-mode #servicios p,
+    body.dark-mode .servicios p,
+    body.dark-mode #turismo p,
+    body.dark-mode .turismo p,
+    .dark-mode .card p,
+    .dark-mode .tarjeta p,
+    .dark-mode .servicio p,
+    .dark-mode .tarjeta-contenido p,
+    .dark-mode .banner-tramite p,
+    .dark-mode .noticia__contenido-blanco p,
+    .dark-mode .lista-departamentos p,
+    .dark-mode #servicios p,
+    .dark-mode .servicios p,
+    .dark-mode #turismo p,
+    .dark-mode .turismo p,
+    [data-theme="oscuro"] .card p,
+    [data-theme="oscuro"] .tarjeta p,
+    [data-theme="oscuro"] .servicio p,
+    [data-theme="oscuro"] .tarjeta-contenido p,
+    [data-theme="oscuro"] .banner-tramite p,
+    [data-theme="oscuro"] .noticia__contenido-blanco p {
+      color: #ffffff !important;
+    }
+    
+    /* 3. Listas y listas de requisitos (li, ul) */
+    body.dark-mode .card li,
+    body.dark-mode .tarjeta li,
+    body.dark-mode .servicio li,
+    body.dark-mode .tarjeta-contenido li,
+    body.dark-mode .banner-tramite li,
+    body.dark-mode .requisitos li,
+    body.dark-mode .requisitos li::before,
+    body.dark-mode .requisitos,
+    body.dark-mode .lista-departamentos li,
+    .dark-mode .card li,
+    .dark-mode .tarjeta li,
+    .dark-mode .servicio li,
+    .dark-mode .tarjeta-contenido li,
+    .dark-mode .banner-tramite li,
+    .dark-mode .requisitos li,
+    .dark-mode .requisitos li::before,
+    .dark-mode .requisitos,
+    .dark-mode .lista-departamentos li,
+    [data-theme="oscuro"] .card li,
+    [data-theme="oscuro"] .tarjeta li,
+    [data-theme="oscuro"] .servicio li,
+    [data-theme="oscuro"] .tarjeta-contenido li,
+    [data-theme="oscuro"] .banner-tramite li,
+    [data-theme="oscuro"] .requisitos li,
+    [data-theme="oscuro"] .requisitos li::before,
+    [data-theme="oscuro"] .lista-departamentos li {
+      color: #ffffff !important;
+    }
+    
+    /* 4. Enlaces (a), enlaces 'Ingresar' y nombres de direcciones municipales */
+    body.dark-mode .card a,
+    body.dark-mode .tarjeta a,
+    body.dark-mode .servicio a,
+    body.dark-mode .tarjeta-contenido a,
+    body.dark-mode .banner-tramite a,
+    body.dark-mode .tarjeta__enlace,
+    body.dark-mode .servicio__enlace,
+    body.dark-mode .lista-departamentos a,
+    body.dark-mode .lista-departamentos a:hover,
+    body.dark-mode .lista-departamentos li a,
+    .dark-mode .card a,
+    .dark-mode .tarjeta a,
+    .dark-mode .servicio a,
+    .dark-mode .tarjeta-contenido a,
+    .dark-mode .banner-tramite a,
+    .dark-mode .tarjeta__enlace,
+    .dark-mode .servicio__enlace,
+    .dark-mode .lista-departamentos a,
+    .dark-mode .lista-departamentos a:hover,
+    .dark-mode .lista-departamentos li a,
+    [data-theme="oscuro"] .card a,
+    [data-theme="oscuro"] .tarjeta a,
+    [data-theme="oscuro"] .servicio a,
+    [data-theme="oscuro"] .tarjeta-contenido a,
+    [data-theme="oscuro"] .banner-tramite a,
+    [data-theme="oscuro"] .tarjeta__enlace,
+    [data-theme="oscuro"] .servicio__enlace,
+    [data-theme="oscuro"] .lista-departamentos a,
+    [data-theme="oscuro"] .lista-departamentos a:hover {
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .tarjeta__enlace:hover,
+    body.dark-mode .servicio__enlace:hover,
+    .dark-mode .tarjeta__enlace:hover,
+    .dark-mode .servicio__enlace:hover {
+      color: #ffffff !important;
+      text-decoration: underline !important;
+    }
+    
+    /* 5. Spans y etiquetas dentro de tarjetas o contenedores */
+    body.dark-mode .card span,
+    body.dark-mode .tarjeta span,
+    body.dark-mode .servicio span,
+    body.dark-mode .tarjeta-contenido span,
+    body.dark-mode .banner-tramite span,
+    body.dark-mode .noticia__contenido-blanco span,
+    body.dark-mode .lista-departamentos span,
+    .dark-mode .card span,
+    .dark-mode .tarjeta span,
+    .dark-mode .servicio span,
+    .dark-mode .tarjeta-contenido span,
+    .dark-mode .banner-tramite span,
+    .dark-mode .noticia__contenido-blanco span,
+    .dark-mode .lista-departamentos span,
+    [data-theme="oscuro"] .card span,
+    [data-theme="oscuro"] .tarjeta span,
+    [data-theme="oscuro"] .servicio span,
+    [data-theme="oscuro"] .tarjeta-contenido span,
+    [data-theme="oscuro"] .banner-tramite span,
+    [data-theme="oscuro"] .noticia__contenido-blanco span {
+      color: #ffffff !important;
+    }
+    
+    /* 6. Íconos dentro de tarjetas */
+    body.dark-mode .tarjeta__icono,
+    body.dark-mode .servicio__icono,
+    .dark-mode .tarjeta__icono,
+    .dark-mode .servicio__icono,
+    [data-theme="oscuro"] .tarjeta__icono,
+    [data-theme="oscuro"] .servicio__icono {
+      color: #ffffff !important;
+      background-color: rgba(139, 95, 198, 0.35) !important;
+    }
+    
+    /* 7. Regla universal: absolutamente TODO el texto dentro de cualquier tarjeta, recuadro o contenedor */
+    body.dark-mode .card *,
+    body.dark-mode .tarjeta *,
+    body.dark-mode .servicio *,
+    body.dark-mode .tarjeta-contenido *,
+    body.dark-mode .tarjeta__contenido *,
+    body.dark-mode .banner-tramite *,
+    body.dark-mode .noticia__contenido-blanco *,
+    body.dark-mode .requisitos *,
+    body.dark-mode .lista-departamentos li *,
+    body.dark-mode #servicios .servicio *,
+    body.dark-mode .servicios .servicio *,
+    body.dark-mode #turismo .tarjeta *,
+    body.dark-mode .turismo .tarjeta *,
+    body.dark-mode .rejilla .tarjeta *,
+    body.dark-mode .rejilla .card *,
+    .dark-mode .card *,
+    .dark-mode .tarjeta *,
+    .dark-mode .servicio *,
+    .dark-mode .tarjeta-contenido *,
+    .dark-mode .tarjeta__contenido *,
+    .dark-mode .banner-tramite *,
+    .dark-mode .noticia__contenido-blanco *,
+    .dark-mode .requisitos *,
+    .dark-mode .lista-departamentos li *,
+    .dark-mode #servicios .servicio *,
+    .dark-mode .servicios .servicio *,
+    .dark-mode #turismo .tarjeta *,
+    .dark-mode .turismo .tarjeta *,
+    .dark-mode .rejilla .tarjeta *,
+    .dark-mode .rejilla .card *,
+    [data-theme="oscuro"] .card *,
+    [data-theme="oscuro"] .tarjeta *,
+    [data-theme="oscuro"] .servicio *,
+    [data-theme="oscuro"] .tarjeta-contenido *,
+    [data-theme="oscuro"] .tarjeta__contenido *,
+    [data-theme="oscuro"] .banner-tramite *,
+    [data-theme="oscuro"] .noticia__contenido-blanco *,
+    [data-theme="oscuro"] .requisitos *,
+    [data-theme="oscuro"] .lista-departamentos li * {
+      color: #ffffff !important;
+    }
+    
+    /* 8. Botones principales para que mantengan texto blanco legible */
+    body.dark-mode .boton,
+    body.dark-mode .boton--destacado,
+    body.dark-mode .boton--primario,
+    .dark-mode .boton,
+    .dark-mode .boton--destacado,
+    .dark-mode .boton--primario,
+    [data-theme="oscuro"] .boton,
+    [data-theme="oscuro"] .boton--destacado,
+    [data-theme="oscuro"] .boton--primario {
+      background-color: #8b5fc6 !important;
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .boton:hover,
+    body.dark-mode .boton--destacado:hover,
+    body.dark-mode .boton--primario:hover,
+    .dark-mode .boton:hover,
+    .dark-mode .boton--destacado:hover,
+    .dark-mode .boton--primario:hover,
+    [data-theme="oscuro"] .boton:hover,
+    [data-theme="oscuro"] .boton--destacado:hover,
+    [data-theme="oscuro"] .boton--primario:hover {
+      background-color: #a078d6 !important;
+      color: #ffffff !important;
+    }
+    
+    /* Pie de página en modo oscuro */
+    body.dark-mode .pie,
+    .dark-mode .pie,
+    [data-theme="oscuro"] .pie {
+      background-color: #0b1115 !important;
+      color: #ffffff !important;
+    }
+    
+    body.dark-mode .pie *,
+    .dark-mode .pie *,
+    [data-theme="oscuro"] .pie * {
+      color: #ffffff !important;
+    }
+    
+  
+    /* Logo en modo oscuro */
+    body.dark-mode header .marca img,
+    body.dark-mode header .marca__logo,
+    body.dark-mode header img[src*="logo"],
+    body.dark-mode .encabezado .marca__logo,
+    body.dark-mode .encabezado .marca img,
+    body.dark-mode .encabezado img[src*="logo"],
+    body.dark-mode .marca__logo,
+    body.dark-mode .marca img,
+    .dark-mode header .marca img,
+    .dark-mode header .marca__logo,
+    .dark-mode header img[src*="logo"],
+    .dark-mode .encabezado .marca__logo,
+    .dark-mode .encabezado .marca img,
+    .dark-mode .encabezado img[src*="logo"],
+    .dark-mode .marca__logo,
+    .dark-mode .marca img,
+    [data-theme="oscuro"] header .marca img,
+    [data-theme="oscuro"] header .marca__logo,
+    [data-theme="oscuro"] .encabezado .marca__logo,
+    [data-theme="oscuro"] .marca__logo {
+      filter: brightness(0) invert(1) !important;
+      -webkit-filter: brightness(0) invert(1) !important;
+      opacity: 1 !important;
+      transition: filter 0.25s ease;
+    }
+</style>
+  <link rel="stylesheet" href="vendor/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="vendor/fontawesome/css/brands.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/alpinejs/alpine.min.js"></script>
+</head>
+<body class="pagina-departamento" x-data="{ open: false }" :class="{ 'overflow-hidden': open }" x-effect="if (open) $nextTick(() => $refs.menuCerrar.focus())" @keydown.escape.window="if (open) { open = false; $nextTick(() => $refs.menuBoton.focus()) }">
+  <header class="encabezado encabezado-adaptable" @resize.window="if (window.innerWidth >= 768 && open) { open = false; $nextTick(() => $refs.navegacionEscritorio.querySelector('a, button').focus()) }">
+    <div class="container encabezado__barra">
+      <a class="marca" href="index.html" aria-label="Municipalidad de Puerto Varas: inicio"><img class="marca__logo" src="images/logo.png" alt="Municipalidad de Puerto Varas"></a>
+      <nav class="navegacion menu-escritorio hidden md:flex" aria-label="Navegación principal" x-ref="navegacionEscritorio">
+        <a href="index.html">Inicio</a>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'tramites-escritorio') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'tramites-escritorio' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'tramites-escritorio' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="tramites-escritorio">Trámites<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="tramites-escritorio" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="guia-tramites.html">Todos los trámites online</a>
+            <a href="tramites-presenciales.html">Trámites presenciales</a>
+            <a href="permiso-circulacion.html">Permiso de Circulación</a>
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="oirs.html">OIRS</a>
+            <a href="pago-derechos-varios.html">Pago de Derechos Varios</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="licencias-conducir.html">Licencias de Conducir</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'departamentos-escritorio') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'departamentos-escritorio' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'departamentos-escritorio' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="departamentos-escritorio">Departamentos<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="departamentos-escritorio" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="alcaldia.html">Alcaldía</a>
+            <a href="administracion-municipal.html">Administración Municipal</a>
+            <a href="direccion-administracion-finanzas.html">Dirección de Administración y Finanzas</a>
+            <a href="direccion-desarrollo-comunitario.html">Dirección Desarrollo Comunitario (DIDECO)</a>
+            <a href="direccion-obras-municipales.html">Dirección de Obras Municipales</a>
+            <a href="direccion-transito-transporte.html">Dirección de Tránsito y Transporte Público</a>
+            <a href="direccion-control.html">Dirección de Control</a>
+            <a href="secpla.html">Secretaría Comunal de Planificación (SECPLA)</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="direccion-salud-municipal.html">Dirección de Salud Municipal</a>
+            <a href="secretaria-municipal.html">Secretaría Municipal</a>
+            <a href="direccion-turismo.html">Dirección de Turismo</a>
+            <a href="direccion-medio-ambiente.html">Dirección de Medio Ambiente</a>
+            <a href="direccion-seguridad-publica.html">Dirección de Seguridad Pública y Emergencia</a>
+            <a href="cementerio-municipal.html">Departamento de Administración Cementerio Municipal</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'servicios-escritorio') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'servicios-escritorio' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'servicios-escritorio' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="servicios-escritorio">Servicios<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="servicios-escritorio" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="tramites-presenciales.html">Guía de Trámites Presenciales</a>
+            <a href="guia-tramites.html">Trámites Online</a>
+            <a href="direccion-turismo.html">Turismo</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+          </div>
+        </div>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+      <div class="encabezado__controles">
+        <button class="tema-boton" id="tema-boton" type="button" aria-label="Alternar modo claro u oscuro">
+          <svg class="tema-boton__luna" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="tema-boton__sol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="menu-boton block md:hidden" type="button" x-ref="menuBoton" @click="open = true" aria-controls="menu-movil" aria-expanded="false" :aria-expanded="open.toString()" aria-label="Abrir menú de navegación"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </div>
+    </div>
+    <div class="menu-movil-dialogo md:hidden" id="menu-movil" role="dialog" aria-modal="true" aria-labelledby="titulo-menu-movil" x-ref="menuDialogo" x-cloak x-show="open" x-transition.opacity.duration.150ms @click.self="open = false; $refs.menuBoton.focus()" @keydown.tab="mantenerFocoMenu($event)">
+      <div class="menu-movil-panel">
+        <div class="menu-movil__cabecera"><h2 id="titulo-menu-movil">Menú de navegación</h2><button class="menu-cerrar" type="button" x-ref="menuCerrar" @click="open = false; $refs.menuBoton.focus()" aria-label="Cerrar menú de navegación"><span aria-hidden="true">&#10005;</span></button></div>
+        <nav class="menu-movil__enlaces" aria-label="Navegación móvil" @click="if ($event.target.closest('a')) { open = false; $nextTick(() => enfocarDestinoNavegacion($event)) }">
+        <a href="index.html">Inicio</a>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'tramites-movil') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'tramites-movil' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'tramites-movil' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="tramites-movil">Trámites<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="tramites-movil" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="guia-tramites.html">Todos los trámites online</a>
+            <a href="tramites-presenciales.html">Trámites presenciales</a>
+            <a href="permiso-circulacion.html">Permiso de Circulación</a>
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="oirs.html">OIRS</a>
+            <a href="pago-derechos-varios.html">Pago de Derechos Varios</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="licencias-conducir.html">Licencias de Conducir</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'departamentos-movil') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'departamentos-movil' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'departamentos-movil' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="departamentos-movil">Departamentos<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="departamentos-movil" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="alcaldia.html">Alcaldía</a>
+            <a href="administracion-municipal.html">Administración Municipal</a>
+            <a href="direccion-administracion-finanzas.html">Dirección de Administración y Finanzas</a>
+            <a href="direccion-desarrollo-comunitario.html">Dirección Desarrollo Comunitario (DIDECO)</a>
+            <a href="direccion-obras-municipales.html">Dirección de Obras Municipales</a>
+            <a href="direccion-transito-transporte.html">Dirección de Tránsito y Transporte Público</a>
+            <a href="direccion-control.html">Dirección de Control</a>
+            <a href="secpla.html">Secretaría Comunal de Planificación (SECPLA)</a>
+            <a href="juzgado-policia-local.html">Juzgado de Policía Local</a>
+            <a href="direccion-salud-municipal.html">Dirección de Salud Municipal</a>
+            <a href="secretaria-municipal.html">Secretaría Municipal</a>
+            <a href="direccion-turismo.html">Dirección de Turismo</a>
+            <a href="direccion-medio-ambiente.html">Dirección de Medio Ambiente</a>
+            <a href="direccion-seguridad-publica.html">Dirección de Seguridad Pública y Emergencia</a>
+            <a href="cementerio-municipal.html">Departamento de Administración Cementerio Municipal</a>
+          </div>
+        </div>
+<div class="navegacion-desplegable" x-data="{ open: false }" :class="{ 'esta-abierto': open }" @click.outside="open = false" @cerrar-desplegables.window="if ($event.detail.id !== 'servicios-movil') open = false" @keydown.escape.window="if (open) { open = false; if (window.innerWidth >= 768) $refs.activador.focus() }">
+          <button class="desplegable__boton" type="button" x-ref="activador" @click="open = !open; if (open) $dispatch('cerrar-desplegables', { id: 'servicios-movil' })" @keydown.arrow-down.prevent="open = true; $dispatch('cerrar-desplegables', { id: 'servicios-movil' }); $nextTick(() => $refs.panel.querySelector('a').focus())" aria-expanded="false" :aria-expanded="open.toString()" aria-controls="servicios-movil">Servicios<svg class="desplegable__indicador" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="desplegable__panel" id="servicios-movil" x-ref="panel" x-cloak x-show="open" x-transition.opacity.duration.150ms @click="if ($event.target.closest('a')) open = false">
+            <a href="aseo-domiciliario.html">Aseo Domiciliario</a>
+            <a href="dom-digital.html">DOM Digital</a>
+            <a href="tramites-presenciales.html">Guía de Trámites Presenciales</a>
+            <a href="guia-tramites.html">Trámites Online</a>
+            <a href="direccion-turismo.html">Turismo</a>
+            <a href="patentes-comerciales.html">Patentes Comerciales</a>
+          </div>
+        </div>
+        <a href="index.html#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container seccion detalle-departamento">
+    <article class="tarjeta-contenido card detalle-departamento__informacion">
+      <h1>Dirección de Seguridad Pública y Emergencia</h1>
+      <p>La Dirección de Seguridad Pública y Emergencia apoya, promueve e implementa medidas de prevención en seguridad vecinal y emergencias comunales.</p>
+      <p>Su trabajo busca contribuir al bienestar de la ciudadanía mediante acciones preventivas y la coordinación de medidas dentro de sus competencias.</p>
+      
+      <a class="boton detalle-departamento__volver" href="index.html">Volver al inicio</a>
+    </article>
+    <section class="tarjeta-contenido card detalle-departamento__ubicacion" aria-labelledby="titulo-ubicacion">
+      <h2 id="titulo-ubicacion">Ubicación de referencia</h2>
+      <p>Sede de la Municipalidad de Puerto Varas: San Francisco 413. Esta ubicación es una referencia municipal; consulta la oficina de atención correspondiente a tu gestión.</p>
+      <a class="mapa-enlace" href="https://maps.google.com/?q=Municipalidad%20de%20Puerto%20Varas%2C%20San%20Francisco%20413%2C%20Puerto%20Varas%2C%20Chile" target="_blank" rel="noopener noreferrer" aria-label="Abrir ubicación de la Municipalidad en Google Maps (pestaña nueva)">
+        <iframe class="mapa-enlace__vista" title="Mapa de la sede de la Municipalidad de Puerto Varas" src="https://www.google.com/maps?q=Municipalidad%20de%20Puerto%20Varas%2C%20San%20Francisco%20413%2C%20Puerto%20Varas%2C%20Chile&amp;z=16&amp;output=embed" width="600" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
+        <span class="mapa-enlace__texto">Ver ubicación en Google Maps ↗</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="container">
+      <div class="pie__legal">
+        <nav class="pie__redes" aria-label="Redes sociales oficiales">
+          <a href="https://web.facebook.com/puertovarasinforma/?locale=es_LA&amp;_rdc=1&amp;_rdr" target="_blank" rel="noopener noreferrer" aria-label="Facebook de la Municipalidad (abre en una pestaña nueva)">
+            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.instagram.com/municipiopuertovaras/?hl=es" target="_blank" rel="noopener noreferrer" aria-label="Instagram de la Municipalidad (abre en una pestaña nueva)">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.tiktok.com/@munipuertovaras" target="_blank" rel="noopener noreferrer" aria-label="TikTok de la Municipalidad (abre en una pestaña nueva)">
+            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+          </a>
+        </nav>
+        <p>&copy; 2026 Municipalidad de Puerto Varas. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
